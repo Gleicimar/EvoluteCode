@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="banner">
+    <div class="center">
+        <div class="banner-text">
+            <h1>Transformando ideias em soluções digitais inovadoras</h1>
+            <p>Somos especialistas em desenvolvimento de software personalizado, criando soluções que impulsionam o crescimento do seu negócio e otimizam processos com tecnologia de ponta.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn">Nossos Serviços</a>
+                <a href="#" class="btn-secondary">Agendar Demonstração</a>
+            </div>
+        </div>
+        <div class="banner-image">
+            <img src="{{url_for('static', filename='images/equipe.jpg')}}" alt="Equipe Trabalhando">
+        </div>
+    </div>
+</section>
+<section class="services">
+    <div class="center">
+        <div class="service-title">
+            <h2>Nossos Serviços</h2>
+            <p>Oferecemos soluções completas para potencializar seu negócio através da tecnologia</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M20 3H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2zM4 19V7h16l.002 12H4z"></path>
+                        <path d="M9.293 9.293 5.586 13l3.707 3.707 1.414-1.414L8.414 13l2.293-2.293zm5.414 0-1.414 1.414L15.586 13l-2.293 2.293 1.414 1.414L18.414 13z"></path>
+                    </svg>
+                </div>
+                <h3>Desenvolvimento de Software</h3>
+                <p>Criamos soluções personalizadas que se adaptam às necessidades específicas do seu negócio, com foco em escalabilidade e desempenho.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M20 17V7c0-2.168-3.663-4-8-4S4 4.832 4 7v10c0 2.168 3.663 4 8 4s8-1.832 8-4zM12 5c3.691 0 5.931 1.507 6 1.994C17.931 7.493 15.691 9 12 9S6.069 7.493 6 7.006C6.069 6.507 8.309 5 12 5zM6 9.607C7.479 10.454 9.637 11 12 11s4.521-.546 6-1.393v2.387c-.069.499-2.309 2.006-6 2.006s-5.931-1.507-6-2V9.607zM6 17v-2.393C7.479 15.454 9.637 16 12 16s4.521-.546 6-1.393v2.387c-.069.499-2.309 2.006-6 2.006s-5.931-1.507-6-2z"></path>
+                    </svg>
+                </div>
+                <h3>Banco de Dados & Analytics</h3>
+                <p>Estruturamos e otimizamos bancos de dados para garantir a segurança das informações e facilitar a análise de dados para tomada de decisões.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6z"></path>
+                    </svg>
+                </div>
+                <h3>Inteligência Artificial</h3>
+                <p>Implementamos soluções de IA que automatizam processos, identificam padrões e geram insights valiosos para o crescimento do seu negócio.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EvoluteCode</title>
+    <link rel="stylesheet" href="{{url_for('static', filename= 'css/evolute.css')}}">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="{{url_for('static', filename= 'images/evolute.svg')}}" alt="EvoluteCode Logo" />
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Serviços</a></li>
+                    <li><a href="#">Sobre</a></li>
+                    <li><a href="#">Portfolio</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="btn">Solicitar Orçamento</a>
+        </div>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>EvoluteCode &copy; 2025</p>
+    </footer>
+    
+</body>
+</html>

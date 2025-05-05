@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="baner">
+    <div class="center">
+        <h2>Login</h2>
+    {% with messages = get_flasheds_message() %}
+        {%if messages %}
+            <ul class ="flashes">
+                {%for message in messages%}
+                    <li>{{message}}</li>
+            </ul>
+        {%endif%}
+    {%endwith%}
+    <form method="post">
+        <label for="Usuario">Usuario:</label>
+        <input type="text" name="usuario" placeholder="Digite seu usuario">
+        <label for="Senha" >Senha:</label>
+        <input type="password" name="senha" placeholder="Digite sua senha">
+        <input type="submit" value="Login" >
+    </form>         
+    </div>
+</section>
+
+
+
+{% endblock %}
