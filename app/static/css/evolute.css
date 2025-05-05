@@ -219,11 +219,145 @@ nav ul li a:hover {
     color:var(--blue-very-dark);
     line-height: 1.6;
 }
+.sobre{
+padding: 5rem 2rem;
+background:var(--blue-very-light);
+}
 
+.sobre >.center{
+    align-items: center;
+    justify-content: space-between;
+}
+.sobre_img{
+width: 45%;
+}
+.sobre_img img{
+    width: 100%;
+    border-radius: 10px;
+}
+.sobre-text{
+    width: 50%;
+    padding-left: 3rem;
+}
+.sobre-text h2{
+    font-size: 2.5rem;
+    color:var(--blue-dark);
+    margin-bottom: 1.7rem;
+}
+.sobre-text p{
+    color:var(--blue-very-dark);
+    line-height: 1.7;
+    margin-bottom: 1.8rem;
+}
+
+.status{
+    padding: 5rem 2rem;
+    background:var(--blue-dark);
+    color: white;
+}
+.status>.center{
+    display: grid;
+    margin: 0 auto;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+.status_item{
+    text-align: center;
+}
+.status_num{
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 0.6rem;
+    color: var(--blue-light);
+}
+.status-label{
+    font-size: 1.4rem;
+}
+
+.cta{
+    color: white;
+    text-align: center;
+    padding: 5rem 2rem;
+    background: linear-gradient(135deg, var(--blue-primary), var(--blue-medium));
+}
+.cta>.center{
+    max-width: 700px;
+    margin: 0 auto;
+}
+.cta h2{
+    font-size: 2.5rem;
+    margin-bottom: 1.8rem;
+}
+.cta p{
+    font-size: 1.5rem;
+    margin-bottom: 2.7rem;
+}
+.cta_buttons{
+    display: flex;
+    justify-content: center;
+    gap:1.3rem
+}
 /* footer */
 
 footer {
     background-color: var(--blue-very-dark);
     color: white;
     padding: 4rem 2rem 2rem;
-}ssh
+}
+
+footer>.center{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3.2rem;
+    margin:0 auto;
+}
+
+.footer_col h3{
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: var(--blue-light);
+}
+.footer_col p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: var(--blue-gray);
+}
+.footer_col ul li{
+    margin-bottom: 0.9rem;
+}
+
+
+.footer-col ul li a {
+    text-decoration: none;
+    color: var(--blue-gray);
+    transition: color 0.3s;
+}
+
+.footer-col ul li a:hover {
+    color: var(--blue-light);
+}
+
+.foot_bott{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    color: var(--blue-gray);
+    font-size: 0.9rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    color: var(--blue-gray);
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--blue-light);
+}
