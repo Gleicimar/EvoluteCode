@@ -103,6 +103,7 @@ nav ul li a:hover {
     padding: 160px 2rem 100px;
     color: white;
     margin: 0 auto;
+    width:100%;
 }
 .banner >.center{
     margin: 0 auto;
@@ -360,4 +361,38 @@ footer>.center{
 
 .social-links a:hover {
     color: var(--blue-light);
+}
+@media screen and (max-width:968px) {
+    .banner >.center,.sobre >.center{
+        flex-direction:column;
+    }
+    .banner-image,.sobre-text,.sobre_img{
+        width: 100%;
+    }
+    .banner-image,.sobre-text{
+        margin-top:3rem
+    }
+    .cta-buttons {
+        width: 100%;
+        max-width: 600px;
+        margin-top: 2rem;
+    }
+    .banner,.services,.sobre,.status,.cta,footer{
+        display: flex;
+    }
+    
+    .sobre-text{
+        padding-left: 0;
+    }
+    
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+    .status >.center{
+        grid-template-columns: 1fr 1fr;
+    
+    }
+    footer >.center{
+        grid-template-columns: 1fr;
+    }
 }
