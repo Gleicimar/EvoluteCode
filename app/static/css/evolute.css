@@ -378,11 +378,17 @@ footer>.center{
     color: var(--blue-light);
 }
 @media screen and (max-width:968px) {
+    header{
+        text-align:center
+    }
     .banner,.services,.sobre,.status,.cta,footer{
         display: flex;
     }
     .menu{
         visibility: visible;
+        width: 100%;
+        transition: all 0.3s ease-in-out;
+
     }
     #menu>ul{
 display: none;  
@@ -390,9 +396,10 @@ display: none;
 #menu.active ul{
     display: block;
     width: 100%;
+    margin-top: 1.4rem;
 }
 #menu.active ul li{
-    width: 100%;
+    width: 100vw;
     text-align: center;
     
 }
@@ -401,6 +408,13 @@ display: none;
 }
 #menu.active ul li a{
     padding: 1rem;
+}
+.foot_bott{
+    flex-direction: column;
+    align-items: center;
+}
+.social-links{
+    margin-top: 1.8rem;
 }
 }
 @media screen and (max-width:768px) {
