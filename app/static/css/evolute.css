@@ -30,7 +30,8 @@ ul,a{
 .center{
     display:flex;
     flex-wrap: wrap;
-    width:1280px;
+    width:100%;
+    max-width:1280px;
     padding:0 2%;
 
 }
@@ -383,18 +384,40 @@ footer>.center{
     .menu{
         visibility: visible;
     }
-    nav>ul{
-display: none;    }
+    #menu>ul{
+display: none;  
+}
+#menu.active ul{
+    display: block;
+    width: 100%;
+}
+#menu.active ul li{
+    width: 100%;
+    text-align: center;
+    
+}
+#menu.active ul li:hover{
+    background-color: var(--blue-light);
+}
+#menu.active ul li a{
+    padding: 1rem;
+}
 }
 @media screen and (max-width:768px) {
     .header-container{
         flex-direction: column;
     }
-    menu{
-        visibility: visible;
-        padding-left: 29rem;
+    
+    
+    
+    .banner,.services,.sobre,.status,.cta,footer{
+        display: flex;
     }
- .banner h1 {
+    .banner-image,.sobre-text,.sobre_img{
+        width: 100%;
+    }
+
+    .banner h1 {
     font-size: 40px;
 }
     .banner >.center,.sobre >.center{
