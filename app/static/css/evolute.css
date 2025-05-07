@@ -47,6 +47,7 @@ header {
     max-width: 100%;
     margin: 0 auto;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
 }
@@ -63,6 +64,20 @@ header {
     width:200px;
     height: 50px;
     margin-right: 20px;
+}
+header .center.menu{
+    display: flex;
+    align-items: center;
+}
+.menu{
+    font-size: 1.7rem;
+    color: var(--blue-dark);
+    cursor: pointer;
+    visibility: hidden;
+}
+.menu:hover{
+    color: var(--blue-primary);
+
 }
 
 nav ul {
@@ -363,6 +378,23 @@ footer>.center{
     color: var(--blue-light);
 }
 @media screen and (max-width:968px) {
+    .banner,.services,.sobre,.status,.cta,footer{
+        display: flex;
+    }
+    .menu{
+        visibility: visible;
+    }
+    nav>ul{
+        visibility: hidden;
+    }
+}
+@media screen and (max-width:768px) {
+    .banner h1 {
+        font-size: 40px;
+    }}
+    .banner >.center,.sobre >.center{
+        flex-direction:column;
+    }
     .banner >.center,.sobre >.center{
         flex-direction:column;
     }
@@ -377,10 +409,7 @@ footer>.center{
         max-width: 600px;
         margin-top: 2rem;
     }
-    .banner,.services,.sobre,.status,.cta,footer{
-        display: flex;
-    }
-    
+
     .sobre-text{
         padding-left: 0;
     }
@@ -389,7 +418,7 @@ footer>.center{
         grid-template-columns: 1fr;
     }
     .status >.center{
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr ;
     
     }
     footer >.center{
