@@ -47,7 +47,6 @@ header {
     max-width: 100%;
     margin: 0 auto;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
 }
@@ -385,13 +384,19 @@ footer>.center{
         visibility: visible;
     }
     nav>ul{
-        visibility: hidden;
-    }
+display: none;    }
 }
 @media screen and (max-width:768px) {
-    .banner h1 {
-        font-size: 40px;
-    }}
+    .header-container{
+        flex-direction: column;
+    }
+    menu{
+        visibility: visible;
+        padding-left: 29rem;
+    }
+ .banner h1 {
+    font-size: 40px;
+}
     .banner >.center,.sobre >.center{
         flex-direction:column;
     }
