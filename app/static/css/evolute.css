@@ -388,10 +388,10 @@ footer>.center{
         visibility: visible;
         width: 100%;
         transition: all 0.3s ease-in-out;
-
     }
-    #menu>ul{
+#menu ul{
 display: none;  
+transition: all 0.3s ease-in-out;
 }
 #menu.active ul{
     display: block;
