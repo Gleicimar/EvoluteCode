@@ -377,7 +377,7 @@ footer>.center{
 .social-links a:hover {
     color: var(--blue-light);
 }
-
+/*Painel*/
 .login{
     align-items: center;
     gap: 1rem;
@@ -427,7 +427,15 @@ input[type='submit']:hover{
 
     background-image: linear-gradient(90deg, var(--blue-light), var(--blue-very-light));
 }
+/*Painel home*/
 
+.painel{
+    min-height: 100vh;
+}
+.painel>.center {
+    margin-top: 10rem;
+    font-size: 2rem;
+}
 
 @media screen and (max-width:968px) {
     header{

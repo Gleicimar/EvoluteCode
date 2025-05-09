@@ -1,14 +1,99 @@
 <!DOCTYPE html>
-{% extends "base.html" %}
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EvoluteCode - Painel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <link rel="stylesheet" href="{{url_for('static', filename= 'css/evolute.css')}}">
+    <script defer  src="{{url_for('static', filename= 'js/evolute.js')}}"></script>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="{{url_for('static', filename= 'images/evolute.svg')}}" alt="EvoluteCode Logo" />
+            </div>
+            <h3 class="menu menu_painel"><i class="fas fa-bars"></i></h3>
 
-{% block content %}
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h1>Dashboard</h1>
+            <nav id="menu">
+                <ul>
+                <li><a href="{{url_for('home_painel')}}">Home</a></li>
+                </ul>
+            </nav>
         </div>
-    </div>
-</div>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
 
-{% endblock %}
+
+    <footer>
+        <div class="center">
+            <div class="footer_col">
+                <h3>EvoluteCode</h3>
+                <svg xmlns="http://www.w3.org/2000/svg" width="180" height="40" viewBox="0 0 700 225">
+                    <!-- Brain with code symbols logo -->
+                    <g transform="translate(0, 0)">
+                        <!-- Brain outline -->
+                        <path d="M186.9,68.3c-8.2-9.2-19.1-15.3-31.2-17.2c-2.3-14.7-14.9-26-30.1-26c-8.1,0-15.5,3.2-21,8.4c-5.5-5.2-12.9-8.4-21-8.4c-15.2,0-27.8,11.3-30.1,26c-12.1,1.9-23,8-31.2,17.2C11.7,81.5,7,97.9,7,114.3c0,16.4,4.7,32.8,15.3,46c8.2,9.2,19.1,15.3,31.2,17.2c2.3,14.7,14.9,26,30.1,26c8.1,0,15.5-3.2,21-8.4c5.5,5.2,12.9,8.4,21,8.4c15.2,0,27.8-11.3,30.1-26c12.1-1.9,23-8,31.2-17.2c10.6-13.2,15.3-29.6,15.3-46C202.2,97.9,197.5,81.5,186.9,68.3z" fill="none" stroke="#71CBE8" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+                        
+                        <!-- Code symbols -->
+                        <path d="M90 70 L60 100 L90 130" fill="none" stroke="#71CBE8" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M120 70 L150 100 L120 130" fill="none" stroke="#71CBE8" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+                        
+                        <!-- Brain details -->
+                        <path d="M50,80 C40,90 40,110 50,120" fill="none" stroke="#71CBE8" stroke-width="14" stroke-linecap="round"/>
+                        <path d="M160,80 C170,90 170,110 160,120" fill="none" stroke="#71CBE8" stroke-width="14" stroke-linecap="round"/>
+                    </g>
+                    
+                    <!-- Text "EvoluteCode" -->
+                    <text x="230" y="135" font-family="Arial, sans-serif" font-size="80" font-weight="bold" fill="#71CBE8">EvoluteCode</text>
+                </svg>
+                <p>Transformando ideias em soluções digitais inovadoras que impulsionam o crescimento e otimizam processos com tecnologia de ponta.</p>
+                <p> Minas Gerais, MG - Brasil</p>
+            </div>
+            <div class="footer_col">
+                <h3>Links Rapidos</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+
+            </div>
+            <div class="footer_col">
+                <h3>Serviços</h3>
+                <ul>
+                    <li><a href="#desenvolvimento">Desenvolvimento de Software</a></li>
+                    <li><a href="#sistemas">Sistemas Web</a></li>
+                    <li><a href="#consultorie">Consultoria em Tecnologia</a></li>
+                    <li><a href="#integracao">Integração de Sistemas</a></li>
+                    <li><a href="#manutencao">Manutenção e Suporte</a></li>
+                </ul>
+            </div>
+            <div class="footer_col">
+                <h3>Contatos</h3>
+                <ul>
+                    <li><a href="#contato">contato@evolutecode.com.br</a></li>
+                    <li><a href="#tel">+55 (31) 3456-7890</a></li>
+                    <li><a href="#suporte">Suporte</a></li>
+                    <li><a href="#trabalhe">Trabalhe Conosco</a></li>
+                </ul>
+            </div>
+            <div class="foot_bott">
+                <div>© 2025 EvoluteCode. Todos os direitos reservados.</div>
+                <div class="social-links">
+                    <a href="#linkedin">LinkedIn</a>
+                    <a href="#insta">Instagram</a>
+                    <a href="#git">GitHub</a>
+                    <a href="#X">Twitter</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+</body>
+</html>

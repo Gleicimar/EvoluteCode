@@ -4,7 +4,7 @@ def create_app():
     app = Flask(__name__)
     app.secret_key = 'secret_key'
     
-    from .routes import main
+    from .routes.routes import main
     app.register_blueprint(main)
     
     return app
