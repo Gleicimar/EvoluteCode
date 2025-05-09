@@ -428,11 +428,7 @@ input[type='submit']:hover{
     background-image: linear-gradient(90deg, var(--blue-light), var(--blue-very-light));
 }
 
-/* Banner */
-.banner{
-    background: url("../img/banner.jpg") no-repeat center center/cover;
-    height: 100vh;
-}
+
 @media screen and (max-width:968px) {
     header{
         text-align:center
