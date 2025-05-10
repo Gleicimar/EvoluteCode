@@ -11,6 +11,7 @@ def listar_usuarios():
     usuario =conexao.usuarios.find()
     return render_template('usuarios.html', usuarios=usuario)
 
+
 @main.route('/login',methods=['GET', 'POST'])
 def login():
     if request.method =='POST':
