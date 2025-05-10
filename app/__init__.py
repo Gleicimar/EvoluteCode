@@ -1,5 +1,5 @@
 from flask import Flask
-
+from models.mongo import conexao
 def create_app():
     app = Flask(__name__)
     app.secret_key = 'secret_key'

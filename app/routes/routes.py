@@ -1,10 +1,15 @@
 from flask import Blueprint, flash, render_template, request, flash, get_flashed_messages,redirect, session, url_for
-
+from models.mongo import conexao
 main = Blueprint('main', __name__)
 
 @main.route('/')
 def home():
     return render_template('home.html')
+
+@main.route('/usuarios')
+def listar_usuarios():
+    usuario =conexao.usuarios.find()
+    return render_template('usuarios.html', usuarios=usuario)
 
 @main.route('/login',methods=['GET', 'POST'])
 def login():
