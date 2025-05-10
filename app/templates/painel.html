@@ -4,25 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EvoluteCode - Painel</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <link rel="stylesheet" href="{{url_for('static', filename= 'css/evolute.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename= 'css/evolute.css')}}">
+    <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" >
     <script defer  src="{{url_for('static', filename= 'js/evolute.js')}}"></script>
 </head>
 <body>
-    <header>
+    <header class="header_painel">
         <div class="header-container">
             <div class="logo">
-                <img src="{{url_for('static', filename= 'images/evolute.svg')}}" alt="EvoluteCode Logo" />
+                <img src="{{url_for('static', filename= 'images/evolute.svg')}}" alt="EvoluteCode Logo" >
             </div>
-            <h3 class="menu menu_painel"><i class="fas fa-bars"></i></h3>
+            <a class="menu menu_painel"><i class="fas fa-bars"></i></a>
 
             <nav id="menu">
                 <ul>
-                <li><a href="{{url_for('home_painel')}}">Home</a></li>
+                <li><a href="{{url_for('main.painel_view')}}">Home</a></li>
                 </ul>
             </nav>
+            <h4>Olá, {{session['usuario']}}!</h4>
         </div>
     </header>
-    <main>
+    <main class="painel">
         {% block content %}{% endblock %}
     </main>
 
@@ -62,7 +64,6 @@
                     <li><a href="#blog">Blog</a></li>
                     <li><a href="#contato">Contato</a></li>
                 </ul>
-
             </div>
             <div class="footer_col">
                 <h3>Serviços</h3>
@@ -94,6 +95,5 @@
             </div>
         </div>
     </footer>
-    
 </body>
 </html>
