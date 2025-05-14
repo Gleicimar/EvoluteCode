@@ -18,10 +18,11 @@
 
             <nav id="menu">
                 <ul>
-                <li><a href="{{url_for('main.painel_view')}}">Home</a></li>
+                <li><a href="{{url_for('auth.painel_view')}}">Home</a></li>
+                <li><a href="{{url_for('auth.login')}}">Sair</a></li>
                 </ul>
             </nav>
-            <h4>Olá, {{session['usuario']}}!</h4>
+            <h4>Olá, {{session['nome']}}!</h4>
         </div>
     </header>
     <main class="painel">
