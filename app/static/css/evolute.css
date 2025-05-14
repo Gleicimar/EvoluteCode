@@ -378,6 +378,27 @@ footer>.center{
     color: var(--blue-light);
 }
 /*Painel*/
+.flashes,
+.success,
+.error{
+    display: block;
+    text-align: center;
+    padding: 1.2rem;
+    z-index: 9999;
+    width:100%;
+    font-weight: 600;
+    font-size:18px;
+    color:var(--blue-very-light)
+}
+.success{
+    background-color: var(--blue-primary);
+}
+.error{
+background-color: rgba(255, 0, 0, 0.377);
+
+}
+
+
 .login{
     align-items: center;
     gap: 1rem;
