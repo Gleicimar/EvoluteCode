@@ -1,5 +1,7 @@
 from flask import Blueprint, render_template, request, flash, get_flashed_messages,redirect, session, url_for
 from app.models.user_model import autenticar_usuario, cadastrar_usuario
+import bcrypt
+
 auth = Blueprint('auth', __name__)
 
 
@@ -14,6 +16,7 @@ def cadastrar():
     flash('Usuario ja cadastrado!','erro')
     return render_template('cadastrar.html')
 @auth.route('/login',methods=['GET', 'POST'])
+
 def login():
     if request.method =='POST':
         usuario =request.form['usuario']
