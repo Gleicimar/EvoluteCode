@@ -8,12 +8,13 @@ def autenticar_usuario(usuario,senha):
         senha_hash = usuario["senha"].encode('utf-8')
         if bcrypt.checkpw(senha.encode('utf-8'),senha_hash):
             return usuario
-    return flash("Usuário ou senha incorretos",'error')
+    flash("Usuário ou senha incorretos",'error')
+    return None
 
 def cadastrar_usuario(usuario,senha):
     if db.usuarios.find_one({"usuario":usuario}):
         return False
-    senha_hash =bcrypt.hashpw(senha.encode('utf-8'),bcrypt.gensalt)
+    senha_hash =bcrypt.hashpw(senha.encode('utf-8'),bcrypt.gensalt())
     db.usuarios.insert_one({"usuario":usuario,"senha":senha_hash.decode('utf-8')})
     return True
     

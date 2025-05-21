@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 
 
-conexao = MongoClient("mongodb://localhost:27017/")
+conexao = MongoClient("mongodb+srv://gleicimarribeiro:271121Gl@cluster0.oxswoxj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 
 db = conexao['evolutecode']
 
