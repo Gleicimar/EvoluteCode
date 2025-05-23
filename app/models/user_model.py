@@ -19,5 +19,5 @@ def cadastrar_usuario(usuario,senha):
     return True
     
 def atualizar_usuario(usuario,senha):
-      senha_hash =bcrypt.hash(senha)  
+     senha_hash =bcrypt.hash(senha)  
      db.usuarios.update_one({"usuario":usuario},{"$set":{"senha":senha_hash}})
