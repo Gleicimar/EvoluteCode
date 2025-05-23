@@ -18,20 +18,20 @@ def cadastrar():
 @auth.route('/login',methods=['GET', 'POST'])
 
 def login():
-    if request.method =='POST':
+    if request.method =='POST': 
+        seddion.clear()
         usuario =request.form['usuario']
         senha = request.form['senha']
         usuario = autenticar_usuario(usuario,senha) 
         if usuario :
             session['usuario'] = {'nome':usuario.get('usuario'),
                                 '_id' : str(usuario.get('_id')) }  # adicionar ao session o nome do usuario
-            flash('Login realizado com sucesso! :)','success')
+            flash('Login realizado com sucesso! 😊😊 ','success')
             return redirect(url_for('auth.painel_view'))
         else:
-            flash(' :(  Usuário ou senha incorretos!','error')
-            return render_template('login.html')
+            flash('😭😭😭 Usuário ou senha incorretos!','error')
+          
     return render_template('login.html')
-
 
 @auth.route('/painel')
 def painel_view():
