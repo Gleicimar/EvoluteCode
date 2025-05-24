@@ -5,8 +5,7 @@ import bcrypt
 auth = Blueprint('auth', __name__)
 
 
-@auth.route('/cadastrar',methods
-            =["GET", "POST"]) 
+@auth.route('/cadastrar',methods=["GET", "POST"]) 
 def cadastrar():
     if request.method=='POST':
         usuario= request.form['usuario']
@@ -19,22 +18,24 @@ def cadastrar():
 
 def login():
     if request.method =='POST': 
-        seddion.clear()
-        usuario =request.form['usuario']
+        session.clear()
+        usuario_input = request.form['usuario']
         senha = request.form['senha']
-        usuario = autenticar_usuario(usuario,senha) 
+        usuario = autenticar_usuario(usuario_input,senha) 
         if usuario :
-            session['usuario'] = {'nome':usuario.get('usuario'),
-                                '_id' : str(usuario.get('_id')) }  # adicionar ao session o nome do usuario
+            session['usuario'] = { 'nome': usuario.get('nome') or usuario.get('usuario'),  # Usa o nome, senão o login,
+                                '_id' : str(usuario.get('_id')) } 
             flash('Login realizado com sucesso! 😊😊 ','success')
             return redirect(url_for('auth.painel_view'))
         else:
             flash('😭😭😭 Usuário ou senha incorretos!','error')
-          
     return render_template('login.html')
 
 @auth.route('/painel')
 def painel_view():
     if 'usuario' not in session: 
-        redirect(url_for('auth.login'))
-    return render_template('home_painel.html')   
+        flash('😭😭😭 Você prexcisa estar logado!','error')
+        return
+    redirect(url_for('auth.login'))
+    nome_usuario=session['usuario']['nome']
+    return render_template('home_painel.html', nome=nome_usuario ) 
