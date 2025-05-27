@@ -8,8 +8,10 @@ auth = Blueprint('auth', __name__)
 @auth.route('/cadastrar',methods=["GET", "POST"]) 
 def cadastrar():
     if request.method=='POST':
-        usuario= request.form['usuario']
-        senha =request.form['senha']
+        usuario= request.form['usuario'].strip()
+        senha =request.form['senha'].strip()
+        if not usuario or senha: 
+            flash(" 😒Por favor preencha todos os campos 👌 , erro")
         cadastrar_usuario(usuario,senha)
         flash('Usuario cadastrado com sucesso! :)','success')
     flash('Usuario ja cadastrado!','erro')
@@ -20,7 +22,7 @@ def login():
     if request.method =='POST': 
         session.clear()
         usuario_input = request.form['usuario']
-        senha = request.form['senha']
+        senha = request.form['senha'].strip()
         usuario = autenticar_usuario(usuario_input,senha) 
         if usuario :
             session['usuario'] = { 'nome': usuario.get('nome') or usuario.get('usuario'),  # Usa o nome, senão o login,

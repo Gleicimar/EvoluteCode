@@ -18,9 +18,9 @@
         <h2>Login</h2>
 
         <label for="Usuario">Usuário:</label>
-        <input type="text" name="usuario" placeholder="Digite seu usuario">
+        <input type="text" name="usuario" required placeholder="Digite seu usuario">
         <label for="Senha" >Senha:</label>
-        <input type="password" name="senha" placeholder="Digite sua senha">
+        <input type="password" name="senha" required placeholder="Digite sua senha">
         <input type="submit" value="Login" >
         <a href="{{url_for('auth.cadastrar')}}">
           Cadastrar
