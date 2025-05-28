@@ -10,8 +10,12 @@ def cadastrar():
     if request.method=='POST':
         usuario= request.form['usuario'].strip()
         senha =request.form['senha'].strip()
-        if not usuario or senha: 
+        confirmar_senha = request.form['confirmar_senha'].strip
+
+        if not usuario or senha or confirmar_senha: 
             flash(" 😒Por favor preencha todos os campos 👌 , erro")
+        if len(senha) < 6:
+            flash(" A 🔐 Senha 🔐  deve ter pelo menos 6 caracteres", erro)
         cadastrar_usuario(usuario,senha)
         flash('Usuario cadastrado com sucesso! :)','success')
     flash('Usuario ja cadastrado!','erro')
@@ -23,6 +27,8 @@ def login():
         session.clear()
         usuario_input = request.form['usuario']
         senha = request.form['senha'].strip()
+        if not usuario_input or senha : 
+            flash(" 😒Por favor preencha todos os campos 👌 , erro")
         usuario = autenticar_usuario(usuario_input,senha) 
         if usuario :
             session['usuario'] = { 'nome': usuario.get('nome') or usuario.get('usuario'),  # Usa o nome, senão o login,
@@ -34,6 +40,7 @@ def login():
     return render_template('login.html')
 
 @auth.route('/painel')
+
 def painel_view():
     if 'usuario' not in session: 
         flash('😭😭😭 Você prexcisa estar logado!','error')
