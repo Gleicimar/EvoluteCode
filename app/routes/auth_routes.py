@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, flash, get_flashed_messages,redirect, session, url_for
 from app.models.user_model import autenticar_usuario, cadastrar_usuario
 import bcrypt
+import bleach
 
 auth = Blueprint('auth', __name__)
 
@@ -11,6 +12,10 @@ def cadastrar():
         usuario= request.form['usuario'].strip()
         senha =request.form['senha'].strip()
         confirmar_senha = request.form['confirmar_senha'].strip
+        #sanitização de acessos
+        usario = bleach.clean(usuario)
+        senha = senha
+        confirmar_senha =confirmar_senha
 
         if not usuario or senha or confirmar_senha: 
             flash(" 😒Por favor preencha todos os campos 👌 , erro")
@@ -25,7 +30,7 @@ def cadastrar():
 def login():
     if request.method =='POST': 
         session.clear()
-        usuario_input = request.form['usuario']
+        usuario_input = bleach.clean(request.form['usuario'])
         senha = request.form['senha'].strip()
         if not usuario_input or senha : 
             flash(" 😒Por favor preencha todos os campos 👌 , erro")
