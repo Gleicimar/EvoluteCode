@@ -16,7 +16,8 @@
     {%endwith%}
     <form method="POST">
         <h2>Realizar Cadastro</h2>
-
+    
+        {{csrf_token()}}
         <label for="Usuario">Usuário:</label>
         <input type="text" name="usuario" placeholder="Digite seu usuario">
         <label for="Senha" >Senha:</label>

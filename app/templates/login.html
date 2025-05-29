@@ -15,8 +15,9 @@
         {%endif%}
     {%endwith%}
     <form method="POST">
+        
         <h2>Login</h2>
-
+        {{csrf_token()}}
         <label for="Usuario">Usuário:</label>
         <input type="text" name="usuario" required placeholder="Digite seu usuario">
         <label for="Senha" >Senha:</label>

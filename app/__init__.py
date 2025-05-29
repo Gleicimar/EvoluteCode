@@ -1,5 +1,7 @@
 from flask import Flask
 from config import Config
+from flask_wtf import CSRFProtect
+csrf =CSRFProtect
 
 def create_app():
     app = Flask(__name__)
@@ -13,7 +15,7 @@ def create_app():
         response.headers['X-Content-Type-Options'] = 'nosniff'
         response.headers['X-XSS-Protection'] = '1; mode=block'
         return response
-    
+    csrf.init_app(app)
     from  .routes.auth_routes import auth
     from .routes.routes import main
 
