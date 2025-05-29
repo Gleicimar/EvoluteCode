@@ -2,7 +2,7 @@ import os
 from pymongo import MongoClient
 from config import Config
 
-
+config=MONGO_URI
 
 
 
