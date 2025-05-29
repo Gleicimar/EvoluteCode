@@ -1,8 +1,7 @@
 from pymongo import MongoClient
+from config import Config
 
-
-conexao = MongoClient("mongodb+srv://gleicimarribeiro:271121Gl@cluster0.oxswoxj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-
+conexao = MongoClient(MONGO_URI)
 db = conexao['evolutecode']
 
 usuario  = db['usuarios']

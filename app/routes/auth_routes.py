@@ -15,9 +15,9 @@ def cadastrar():
         if not usuario or senha or confirmar_senha: 
             flash(" 😒Por favor preencha todos os campos 👌 , erro")
         if len(senha) < 6:
-            flash(" A 🔐 Senha 🔐  deve ter pelo menos 6 caracteres", erro)
+            flash(" A 🔐 Senha 🔐 deve ter pelo menos 6 caracteres, erro")
         cadastrar_usuario(usuario,senha)
-        flash('Usuario cadastrado com sucesso! :)','success')
+        flash('Usuario cadastrado com sucesso! 😊','success')
     flash('Usuario ja cadastrado!','erro')
     return render_template('cadastrar.html')
 @auth.route('/login',methods=['GET', 'POST'])
