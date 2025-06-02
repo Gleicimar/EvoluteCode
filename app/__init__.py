@@ -1,10 +1,12 @@
 from flask import Flask
 from config import Config
+from flask_talisman import Talisman
 from flask_wtf import CSRFProtect
-csrf =CSRFProtect
+csrf =CSRFProtect()
 
 def create_app():
     app = Flask(__name__)
+    talisman = Talisman(app, content_security_policy=None)
     app.secret_key = 'secret_key'
     app.config.from_object(Config)
      # Segurança
