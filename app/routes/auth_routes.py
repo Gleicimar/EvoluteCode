@@ -26,12 +26,25 @@ def cadastrar():
     flash('Usuario ja cadastrado!','erro')
     return render_template('cadastrar.html')
 @auth.route('/login',methods=['GET', 'POST'])
-
+#Configuração inicial 
+MAX_LOGIN_ATTEMPTS= 5
+LOCKOUT_TIME =300 #5 minutos para bloqueio
 def login():
     if request.method =='POST': 
         session.clear()
         usuario_input = bleach.clean(request.form['usuario'])
         senha = request.form['senha'].strip()
+        if 'login_attempts' not in session:
+            session['login_attempts']= 0
+            sesion['lockout_time'] = None
+        if session.get('lockout_time'):
+            if time.time() < session['lockout_time']:
+                flash("Você excedeu o numero de tentativas . Tente novamente em alguns minutos, erro")
+                return('login')
+        else:
+            session['login_attempts']= 0
+            session['lockout_time'] =None
+
         if not usuario_input or senha : 
             flash(" 😒Por favor preencha todos os campos 👌 , erro")
         usuario = autenticar_usuario(usuario_input,senha) 
