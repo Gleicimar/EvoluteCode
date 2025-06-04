@@ -5,8 +5,7 @@ from flask_wtf import CSRFProtect
 csrf =CSRFProtect()
 from flask_login import LoginManager
 login_manager = LoginManager()
-login_manager.init_app(app)
-login_manager.login_view ='login'
+
 
 def create_app():
     app = Flask(__name__)
@@ -22,6 +21,8 @@ def create_app():
         response.headers['X-XSS-Protection'] = '1; mode=block'
         return response
     csrf.init_app(app)
+    login_manager.init_app(app)
+    login_manager.login_view ='login'
     from  .routes.auth_routes import auth
     from .routes.routes import main
 
