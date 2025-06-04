@@ -3,6 +3,7 @@ from app.models.user_model import autenticar_usuario, cadastrar_usuario
 import bcrypt
 import bleach
 
+
 auth = Blueprint('auth', __name__)
 
 
@@ -58,7 +59,7 @@ def login():
     return render_template('login.html')
 
 @auth.route('/painel')
-
+@login_required
 def painel_view():
     if 'usuario' not in session: 
         flash('😭😭😭 Você prexcisa estar logado!','error')

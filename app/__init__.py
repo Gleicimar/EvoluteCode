@@ -3,6 +3,10 @@ from config import Config
 from flask_talisman import Talisman
 from flask_wtf import CSRFProtect
 csrf =CSRFProtect()
+from flask_login import LoginManager
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manger.login_view ='login'
 
 def create_app():
     app = Flask(__name__)
