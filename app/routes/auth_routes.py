@@ -27,9 +27,11 @@ def cadastrar():
     flash('Usuario ja cadastrado!','erro')
     return render_template('cadastrar.html')
 @auth.route('/login',methods=['GET', 'POST'])
+
 #Configuração inicial 
 MAX_LOGIN_ATTEMPTS= 5
 LOCKOUT_TIME =300 #5 minutos para bloqueio
+
 def login():
     if request.method =='POST': 
         session.clear()
