@@ -1,11 +1,15 @@
 from flask import Blueprint, render_template, request, flash, get_flashed_messages,redirect, session, url_for
 from app.models.user_model import autenticar_usuario, cadastrar_usuario
+from flask_login import login_required
 import bcrypt
 import bleach
 
 
 auth = Blueprint('auth', __name__)
 
+#Configuração inicial 
+MAX_LOGIN_ATTEMPTS= 5
+LOCKOUT_TIME =300 #5 minutos para bloqueio
 
 @auth.route('/cadastrar',methods=["GET", "POST"]) 
 def cadastrar():
