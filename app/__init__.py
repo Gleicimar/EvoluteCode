@@ -22,7 +22,12 @@ def create_app():
         return response
     csrf.init_app(app)
     login_manager.init_app(app)
-    login_manager.login_view ='login'
+    login_manager.login_view ='auth.login'
+    
+    @login_manager.user_loader
+    def load_user(user_id):
+         return User.get(user_id)
+
     from  .routes.auth_routes import auth
     from .routes.routes import main
 

@@ -16,14 +16,12 @@
     {%endwith%}
     <form method="POST">
         <h2>Realizar Cadastro</h2>
-    
-        {{csrf_token()}}
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <label for="Usuario">Usuário:</label>
         <input type="text" name="usuario" placeholder="Digite seu usuario">
         <label for="Senha" >Senha:</label>
         <input type="password" name="senha" placeholder="Digite sua senha">
         <input type="password" name="confirmar_senha" placeholder="Confirme sua senha">
-
         <input type="submit" value="Cadastrar" >
         <a href="\login">
         Voltar a login

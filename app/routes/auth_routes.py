@@ -3,6 +3,7 @@ from app.models.user_model import autenticar_usuario, cadastrar_usuario
 from flask_login import login_required
 import bcrypt
 import bleach
+import time 
 
 
 auth = Blueprint('auth', __name__)
@@ -40,11 +41,11 @@ def login():
         senha = request.form['senha'].strip()
         if 'login_attempts' not in session:
             session['login_attempts']= 0
-            sesion['lockout_time'] = None
+            session['lockout_time'] = None
         if session.get('lockout_time'):
             if time.time() < session['lockout_time']:
                 flash("Você excedeu o numero de tentativas . Tente novamente em alguns minutos, erro")
-                return('login')
+                return('auth.login')
         else:
             session['login_attempts']= 0
             session['lockout_time'] =None
@@ -65,7 +66,7 @@ def login():
 @login_required
 def painel_view():
     if 'usuario' not in session: 
-        flash('😭😭😭 Você prexcisa estar logado!','error')
+        flash('😭😭😭 Você precisa estar logado!','error')
         return
     redirect(url_for('auth.login'))
     nome_usuario=session['usuario']['nome']
