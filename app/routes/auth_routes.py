@@ -26,12 +26,13 @@ def cadastrar():
 
         if not usuario or not senha or not confirmar_senha: 
             flash(" 😒Por favor preencha todos os campos 👌 , erro")
-        if len(senha) < 6:
-            flash(" A 🔐 Senha 🔐 deve ter pelo menos 6 caracteres, erro")
-        if senha != confirmar_senha:
-            flash("🔐 As senhas não coincidem!", 'error')
-            return render_template('cadastrar.html')
+            if len(senha) < 6:
+                flash(" A 🔐 Senha 🔐 deve ter pelo menos 6 caracteres, erro")
+            if senha != confirmar_senha:
+                flash("🔐 As senhas não coincidem!", 'error')
+                return render_template('cadastrar.html')
         cadastrar_usuario(usuario,senha)
+
         sucesso = cadastrar_usuario(usuario, senha)
         if sucesso:
             flash('✅ Usuário cadastrado com sucesso! 😊', 'success')
@@ -58,14 +59,16 @@ def login():
         if not usuario_input or not senha : 
             flash(" 😒Por favor preencha todos os campos 👌 , erro")
         usuario = autenticar_usuario(usuario_input,senha) 
+
         if usuario :
             session['usuario'] = { 'nome': usuario.get('nome') or usuario.get('usuario'),  # Usa o nome, senão o login,
                                 '_id' : str(usuario.get('_id')) } 
             login_user(User(usuario))
+
             session['login_attempts'] = 0  # Zera tentativas
             flash('✅ Login realizado com sucesso! 😊😊', 'success')
             return redirect(url_for('auth.painel_view'))
-    else:
+        else:
             session['login_attempts'] += 1
             if session['login_attempts'] >= MAX_LOGIN_ATTEMPTS:
                 session['lockout_time'] = time.time() + LOCKOUT_TIME
