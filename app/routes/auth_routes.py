@@ -14,15 +14,15 @@ LOCKOUT_TIME =300 #5 minutos para bloqueio
 
 @auth.route('/cadastrar',methods=["GET", "POST"]) 
 def cadastrar():
-    if request.method=='POST':
+    if request.method == 'POST':
        
-        usuario= request.form['usuario'].strip()
-        senha =request.form['senha'].strip()
+        usuario = request.form['usuario'].strip()
+        senha = request.form['senha'].strip()
         confirmar_senha = request.form['confirmar_senha'].strip()
         #sanitização de acessos
         usuario = bleach.clean(usuario)
         senha = senha
-        confirmar_senha =confirmar_senha
+        confirmar_senha = confirmar_senha
 
         if not usuario or not senha or not confirmar_senha: 
             flash(" 😒Por favor preencha todos os campos 👌 , erro")
@@ -31,15 +31,16 @@ def cadastrar():
             if senha != confirmar_senha:
                 flash("🔐 As senhas não coincidem!", 'error')
                 return render_template('cadastrar.html')
-        cadastrar_usuario(usuario,senha)
+            cadastrar_usuario(usuario,senha)
 
-        sucesso = cadastrar_usuario(usuario, senha)
-        if sucesso:
-            flash('✅ Usuário cadastrado com sucesso! 😊', 'success')
-            return redirect(url_for('auth.login'))
-        else:
-            flash('⚠️ Usuário já cadastrado!', 'error')
-
+            sucesso = cadastrar_usuario(usuario, senha)
+            if sucesso:
+                flash('✅ Usuário cadastrado com sucesso! 😊', 'success')
+                return redirect(url_for('auth.login'))
+            else:
+                flash('⚠️ Usuário já cadastrado!', 'error')
+    return render_template('cadastrar.html')
+    
 @auth.route('/login',methods=['GET', 'POST'])
 def login():
     if request.method =='POST': 

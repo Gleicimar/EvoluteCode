@@ -15,3 +15,18 @@ Menu.addEventListener("click", ()=>{
 
 })
 
+/*fechar mensagem */
+
+document.getElementById('fechar').addEventListener('click', fechar)
+
+document.addeventListener('keydown', (e)=>{
+    if(e.key === 'Escape'){
+        Fechar()
+    }
+})
+
+
+function Fechar(){
+    const  FecharMensagem = document.getElementById('fechar');
+
+}
