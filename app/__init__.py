@@ -1,9 +1,12 @@
+from bson import ObjectId
 from flask import Flask
+from app.models.mongo import db
+from app.models.user_model import User
 from config import Config
 from flask_talisman import Talisman
 from flask_wtf import CSRFProtect
 csrf =CSRFProtect()
-from flask_login import LoginManager
+from flask_login import LoginManager 
 login_manager = LoginManager()
 
 
@@ -23,11 +26,14 @@ def create_app():
     csrf.init_app(app)
     login_manager.init_app(app)
     login_manager.login_view ='auth.login'
+
     
     @login_manager.user_loader
     def load_user(user_id):
-         return User.get(user_id)
-
+        usuario_data= db.usuarios.find_one({'_id': ObjectId(user_id)})
+        if usuario_data:
+           return User(usuario_data)
+        return None
     from  .routes.auth_routes import auth
     from .routes.routes import main
 
