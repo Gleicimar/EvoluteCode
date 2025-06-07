@@ -73,9 +73,9 @@ def login():
             session['login_attempts'] += 1
             if session['login_attempts'] >= MAX_LOGIN_ATTEMPTS:
                 session['lockout_time'] = time.time() + LOCKOUT_TIME
-                flash("🚫 Muitas tentativas. Tente novamente em 5 minutos.", 'erro')
+                flash("🚫 Muitas tentativas. Tente novamente em 5 minutos.", 'error')
             else:
-                flash('😭 Usuário ou senha incorretos!', 'erro')
+                flash('😭 Usuário ou senha incorretos!', 'error')
 
     return render_template('login.html')
 
@@ -83,7 +83,7 @@ def login():
 @login_required
 def painel_view():
     if 'usuario' not in session: 
-        flash('😭😭😭 Você precisa estar logado!','erro')
+        flash('😭😭😭 Você precisa estar logado!','error')
         return
         redirect(url_for('auth.login'))
     nome_usuario=session['usuario']['nome']
