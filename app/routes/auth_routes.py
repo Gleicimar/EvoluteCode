@@ -40,7 +40,7 @@ def cadastrar():
             else:
                 flash('⚠️ Usuário já cadastrado!', 'error')
     return render_template('cadastrar.html')
-    
+
 @auth.route('/login',methods=['GET', 'POST'])
 def login():
     if request.method =='POST': 
@@ -58,7 +58,7 @@ def login():
             session['lockout_time'] =None
 
         if not usuario_input or not senha : 
-            flash(" 😒Por favor preencha todos os campos 👌 , erro")
+            flash("😒Por favor preencha todos os campos" , "error")
         usuario = autenticar_usuario(usuario_input,senha) 
 
         if usuario :
@@ -73,9 +73,9 @@ def login():
             session['login_attempts'] += 1
             if session['login_attempts'] >= MAX_LOGIN_ATTEMPTS:
                 session['lockout_time'] = time.time() + LOCKOUT_TIME
-                flash("🚫 Muitas tentativas. Tente novamente em 5 minutos.", 'error')
+                flash("🚫 Muitas tentativas. Tente novamente em 5 minutos.", 'erro')
             else:
-                flash('😭 Usuário ou senha incorretos!', 'error')
+                flash('😭 Usuário ou senha incorretos!', 'erro')
 
     return render_template('login.html')
 
@@ -83,7 +83,7 @@ def login():
 @login_required
 def painel_view():
     if 'usuario' not in session: 
-        flash('😭😭😭 Você precisa estar logado!','error')
+        flash('😭😭😭 Você precisa estar logado!','erro')
         return
         redirect(url_for('auth.login'))
     nome_usuario=session['usuario']['nome']
