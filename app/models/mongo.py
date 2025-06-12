@@ -13,3 +13,4 @@ conexao = MongoClient(MONGO_URI)
 db = conexao['evolutecode']
 
 usuario  = db['usuarios']
+projetos = db['projetos']

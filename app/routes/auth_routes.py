@@ -78,6 +78,13 @@ def login():
                 flash('😭 Usuário ou senha incorretos!', 'error')
 
     return render_template('login.html')
+@auth.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    session.clear()
+    flash("🔒 Logout realizado com sucesso.", 'success')
+    return redirect(url_for('auth.login'))
 
 @auth.route('/painel')
 @login_required
@@ -89,10 +96,8 @@ def painel_view():
     nome_usuario=session['usuario']['nome']
     return render_template('home_painel.html', nome=nome_usuario ) 
 
-@auth.route('/logout')
+@auth.route('/consulta_projetos')
 @login_required
-def logout():
-    logout_user()
-    session.clear()
-    flash("🔒 Logout realizado com sucesso.", 'success')
-    return redirect(url_for('auth.login'))
+
+def consulta_projeto():
+    if projetos =

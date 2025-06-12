@@ -391,10 +391,10 @@ footer>.center{
     color:var(--blue-very-light)
 }
 .success{
-    background-color: var(--blue-primary);
+    background: var(--blue-primary);
 }
 .error{
-background-color: rgba(255, 0, 0, 0.377);
+background: rgba(255, 0, 0, 0.377);
 
 }
 
@@ -404,7 +404,7 @@ background-color: rgba(255, 0, 0, 0.377);
     gap: 1rem;
     place-items: center;
 }
-form{
+form{  
     display: flex;
     margin: 10rem auto;  
     width:100%;
@@ -454,6 +454,7 @@ input[type='submit']:hover{
 }
 .painel{
     min-height: 100vh;
+    background: var(--blue-medium)
 }
 .painel_home{
   
@@ -467,7 +468,7 @@ input[type='submit']:hover{
     flex-wrap: wrap;
     padding: 3rem   
 }
-.p_title{
+.title{
         margin-top: 1.3rem;
         width:100%;
         margin-bottom:1.2rem
@@ -496,6 +497,23 @@ input[type='submit']:hover{
     color:var(--blue-light);
     font-size:1.1rem
 }
+
+.projetos{
+    background-color: red;
+    
+}
+.projetos h2{
+    text-align:center;
+    width:100%;
+    font-size:22px;
+}
+.projeto_wrapper{
+    display:flex;
+    flex-wrap:wrap;
+    width:calc(100% / 4 - 20px);
+    margin:0 10px
+}
+
 
 @media screen and (max-width:968px) {
     header{

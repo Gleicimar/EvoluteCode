@@ -9,12 +9,16 @@ csrf =CSRFProtect()
 from flask_login import LoginManager 
 login_manager = LoginManager()
 
+UPLOAD_FOLDER = 'static/uploads'
+
 
 def create_app():
     app = Flask(__name__)
     talisman = Talisman(app, content_security_policy=None)
     app.secret_key = 'secret_key'
     app.config.from_object(Config)
+    app.config['UPLOAD_FOLDER'] =UPLOAD_FOLDER
+    ALLOWED_EXTENSIONS={'png', 'jpg','jpeg', 'gif'}
      # Segurança
     @app.after_request
     def set_secure_headers(response):
