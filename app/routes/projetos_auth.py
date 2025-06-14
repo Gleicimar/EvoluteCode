@@ -6,8 +6,8 @@ from .mongo import db
 import datetime
 
     
- @projeto_auth.route('/painel/cadastrar_projetos',,methods=['GET', 'POST'])
- @login_required   
+@projeto_auth.route('/painel/cadastrar_projetos',,methods=['GET', 'POST'])
+@login_required   
 def cadastrar_projetos():
         nome = request.form['nome_empresa']
         tecnologia = request.form['tecnologia']
