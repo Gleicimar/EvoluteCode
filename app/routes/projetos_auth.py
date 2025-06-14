@@ -24,8 +24,8 @@ def cadastrar_projetos():
             'tecnologia' :tecnologia,
            'descricao' :descricao,
             'imagem_id' :imagem_id,
-            'data':datetime.datetime.now()
-        })
+            'data':datetime.datetime.now()})
+            
         return redirect(url_for('cadastrar_projetos'))
 
 
