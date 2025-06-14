@@ -38,10 +38,12 @@ def create_app():
         if usuario_data:
            return User(usuario_data)
         return None
-    from  .routes.auth_routes import auth
     from .routes.routes import main
+    from  .routes.auth_routes import auth
+    from .routes.projetos_auth_routes import projetos_auth
 
     
     app.register_blueprint(main)
     app.register_blueprint(auth)
+    app.register_blueprint(projetos_auth)
     return app
