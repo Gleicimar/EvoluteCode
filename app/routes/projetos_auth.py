@@ -21,9 +21,9 @@ def cadastrar_projetos():
 
         mongo.db.projetos.insert_one({
             'nome' : nome,
-            'tecnologia' :tecnologia
-           'descricao' :descricao
-            'imagem_id' :imagem_id
+            'tecnologia' :tecnologia,
+           'descricao' :descricao,
+            'imagem_id' :imagem_id,
             'data':datetime.datetime.now()
         })
         return redirect(url_for('cadastrar_projetos'))
