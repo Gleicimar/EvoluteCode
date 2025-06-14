@@ -1,11 +1,13 @@
 from passlib.hash import bcrypt
+from flask import Blueprint, render_template, request, flash, get_flashed_messages,redirect, session, url_for
 from flask_login import UserMixin
 from flask import flash
 from werkzeug.utils import secure_filename
 from app.models.mongo import db
 import datetime
 
-    
+projetos_auth = Blueprint('projetos_auth', __name__)
+
 @projetos_auth.route('/painel/cadastrar_projetos',methods=['GET', 'POST'])
 @login_required   
 def cadastrar_projetos():
