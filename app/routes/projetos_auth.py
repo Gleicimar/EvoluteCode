@@ -1,6 +1,7 @@
 from passlib.hash import bcrypt
 from flask import Blueprint, render_template, request, flash, get_flashed_messages,redirect, session, url_for
-from flask_login import UserMixin
+from flask_login import UserMixin, login_user, login_required
+
 from flask import flash
 from werkzeug.utils import secure_filename
 from app.models.mongo import db
