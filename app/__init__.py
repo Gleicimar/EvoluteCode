@@ -40,7 +40,7 @@ def create_app():
         return None
     from .routes.routes import main
     from  .routes.auth_routes import auth
-    from .roue.projetos_auth import projetos_auth
+    from .routes.projetos_auth import projetos_auth
 
     
     app.register_blueprint(main)
