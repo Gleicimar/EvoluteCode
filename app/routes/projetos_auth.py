@@ -2,7 +2,7 @@ from passlib.hash import bcrypt
 from flask_login import UserMixin
 from flask import flash
 from werkzeug.utils import secure_filename
-from .models.mongo import db
+from app.models.mongo import db
 import datetime
 
     
