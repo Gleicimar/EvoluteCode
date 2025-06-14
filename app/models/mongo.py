@@ -15,4 +15,4 @@ db = conexao['evolutecode']
 
 usuario  = db['usuarios']
 projetos = db['projetos']
-fs = GridFs(db)
+fs = GridFS(db)
