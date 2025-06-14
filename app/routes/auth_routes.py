@@ -96,8 +96,4 @@ def painel_view():
     nome_usuario=session['usuario']['nome']
     return render_template('home_painel.html', nome=nome_usuario ) 
 
-@auth.route('/consulta_projetos')
-@login_required
 
-def consulta_projeto():
-    if projetos =
