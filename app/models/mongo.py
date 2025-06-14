@@ -1,6 +1,7 @@
 import os
 from pymongo import MongoClient
 from config import Config
+from gridfs import GridFS
 
 MONGO_URI = os.getenv('MONGO_URI')
 if not MONGO_URI:
@@ -14,3 +15,4 @@ db = conexao['evolutecode']
 
 usuario  = db['usuarios']
 projetos = db['projetos']
+fs = GridFs(db)
