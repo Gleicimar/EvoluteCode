@@ -29,7 +29,7 @@ def cadastrar_projetos():
             'imagem_id' :imagem_id,
             'data':datetime.datetime.now()})
 
-        return redirect(url_for('cadastrar_projetos'))
+        return redirect(url_for('projetos_auth.cadastrar_projetos'))
 
 
      
