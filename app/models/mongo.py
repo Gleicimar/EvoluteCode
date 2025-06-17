@@ -9,7 +9,6 @@ if not MONGO_URI:
 print("Conectado com sucesso")
 
 
-
 conexao = MongoClient(MONGO_URI)
 db = conexao['evolutecode']
 
