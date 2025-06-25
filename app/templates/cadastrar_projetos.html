@@ -16,18 +16,24 @@
     <form method="POST" enctype="multipart/form-data">
         <h2> Cadastrar Projetos</h2>
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-        <label for="Imagem">Imagem:</label>
-        <input type="file" name="imagem" accept="image/  *" >
-        <label for="Tecnologia" >Tecnologia:</label>
+        <label for="imagem">Imagem:</label>
+        <input type="file" name="imagem" accept="image/*" >
+
+        <label for="tecnologia" >Tecnologia:</label>
         <input type="text" name="tecnologia" placeholder="Informe as tecnologias">
-        <label for="Nome_da_empresa" >Nome da empresa:</label>
+
+        <label for="nome_empresa" >Nome da empresa:</label>
         <input type="text" name="nome_empresa" placeholder="Informe o nome da empresa">
+
         <label for="data" >Selecione Data Inicio:</label>
         <input type="date" name="data_inicio" placeholder="Selecione data">
+
         <label for="data" >Selecione  Data Final:</label>
         <input type="date" name="data_final" >
+
         <textarea name="descricao"></textarea>
         <input type="submit" value="Cadastrar Projeto" >
+
         <a href="\consultar_projetos">
         Voltar
         </a>

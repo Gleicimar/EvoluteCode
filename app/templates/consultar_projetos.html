@@ -1,18 +1,28 @@
-<!DOCTYPE html>
-
+{% block content %}
 <section class="projetos">
     <div class="center">
         <h2>Todos os Projetos</h2>
-        <div class="projeto_wrapper">
-            <div class="projeto_item">
-                <img src="/" alt="imagem_do_projeto">
-                <span>tecnologias usadas</span>
-                <h4>Empresa</h4>
-                <p>breve descrição</p>
-                <div class ='controle'>
-                    <a href="" class="btn_controle">Editar</a>
-                    <a href="/deletar" class="btn_controle ex" >Excluir</a>
-                </div>
-        </div>
+        {% if projetos %}
+            <div class="projeto_wrapper">
+                {% for projeto in projetos %}
+                    <div class="projeto_item">
+                        {% if projeto.imagem_id %}
+                            <img src="{{ url_for('projetos_auth.exibir_imagem', imagem_id=projeto.imagem_id) }}"
+                                 alt="Imagem do projeto" class="w-full h-auto mt-2 rounded">
+                        {% endif %}
+                        <span>{{ projeto[tecnologia] }}</span>
+                        <h4>{{ projeto[nome_empresa] }}</h4>
+                        <p>{{ projeto[descricao] }}</p>
+                        <div class="controle">
+                            <a href="/editar/{{ projeto._id }}" class="btn_controle">Editar</a>
+                            <a href="/deletar/{{ projeto._id }}" class="btn_controle ex">Excluir</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>Nenhum projeto encontrado.</p>
+        {% endif %}
     </div>
 </section>
+{% endblock %}
