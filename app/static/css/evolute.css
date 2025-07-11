@@ -448,6 +448,11 @@ input[type='submit']:hover{
 
     background-image: linear-gradient(90deg, var(--blue-light), var(--blue-very-light));
 }
+
+textarea{
+    margin-bottom:3rem;
+    resize: vertical;
+}
 /*Painel home*/
 .header_painel{
     position: relative;
@@ -497,22 +502,42 @@ input[type='submit']:hover{
     color:var(--blue-light);
     font-size:1.1rem
 }
-
+/*consultar*/
 .projetos{
-    background-color: red;
+    background-color:var(--blue-light);
     
 }
-.projetos h2{
+.projetos h2{ 
     text-align:center;
+    padding: 20px;
+    font-size: 38px;
     width:100%;
     font-size:22px;
 }
 .projeto_wrapper{
     display:flex;
-    flex-wrap:wrap;
-    width:calc(100% / 4 - 20px);
-    margin:0 10px
+    flex-direction:row ;
+    width:calc((100% / 4)- 20px);
+    margin: 10px
 }
+.projeto_item{
+    width:100%;
+    margin: 10px;
+   
+    overflow: hidden;
+   
+
+}
+
+.projeto_item img{
+    width: 100%;
+    max-width:700px;
+    border:1px solid var(--blue-dark);
+}
+
+
+
+
 
 
 @media screen and (max-width:968px) {
@@ -613,4 +638,4 @@ transition: all 0.3s ease-in-out;
     footer >.center{
         grid-template-columns: 1fr;
     }
-}
+} 
