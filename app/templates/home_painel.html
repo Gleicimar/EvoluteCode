@@ -12,14 +12,16 @@
         </div>
         <div class="box_wrapper">
             <h4>Projetos</h4>
-            <span>quantidade Entregue:</span>
+            {% if projetos %}
+              <span>quantidade </span>
+            {%endif%}
             <a href="/painel/cadastrar_projetos">Cadastrar</a>
             <a href="/painel/consultar_projetos">Consultar</a>
         </div>
         <div class="box_wrapper">
             <h4>Pendências</h4>
             <span>quantidade Pendente: 2</span>
-            <a href="/consultar_pendencias">Consultar</a>
+            <a href="painel/consultar_pendencias">Consultar</a>
         </div>
    </div>
 </section>

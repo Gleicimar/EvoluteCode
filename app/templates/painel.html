@@ -31,7 +31,7 @@
                 <li><a href="{{url_for('auth.login')}}">Sair</a></li>
                 </ul>
             </nav>
-            <h4>Olá, {{nome}}!</h4>
+            <h4>Olá, {{session['usuario']['nome']}}!</h4>
         </div>
     </header>
     <main class="painel">

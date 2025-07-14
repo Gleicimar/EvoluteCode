@@ -30,7 +30,7 @@ def cadastrar_projetos():
         })
         flash('Projeto cadastrado com sucesso', 'success')
         return redirect(url_for('projetos_auth.listar_projetos'))
-
+        nome_usuario = current_user.nome
     return render_template('cadastrar_projetos.html')
 
 
@@ -39,7 +39,8 @@ def cadastrar_projetos():
 @login_required
 def listar_projetos():
     projetos_list = list(db.projetos.find({}))
-    return render_template('consultar_projetos.html', projetos=projetos_list)
+  
+    return render_template('consultar_projetos.html', projetos=projetos_list )
 
 # ✅ Exibir imagem via GridFS
 @projetos_auth.route('/imagem/<imagem_id>')
