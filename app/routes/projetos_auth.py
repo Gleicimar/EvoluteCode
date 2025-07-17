@@ -7,7 +7,6 @@ import datetime
 
 projetos_auth = Blueprint('projetos_auth', __name__)
 
-# ✅ Cadastro de projetos
 @projetos_auth.route('/painel/cadastrar_projetos', methods=['GET', 'POST'])
 @login_required
 def cadastrar_projetos():
@@ -17,10 +16,15 @@ def cadastrar_projetos():
         descricao = request.form.get('descricao', '').strip()
         imagem = request.files.get('imagem')
 
-        imagem_id = None
-        if imagem and imagem.filename:
-            imagem_id = fs.put(imagem, filename=secure_filename(imagem.filename))
+        # Validação: verificar se todos os campos obrigatórios estão preenchidos
+        if not nome_empresa or not tecnologia or not descricao or not imagem or not imagem.filename:
+            flash('Preencha todos os campos obrigatórios.', 'error')
+            return redirect(request.url)  # redireciona para o mesmo formulário
 
+        # Processar e salvar a imagem
+        imagem_id = fs.put(imagem, filename=secure_filename(imagem.filename))
+
+        # Inserir no banco
         db.projetos.insert_one({
             'nome_empresa': nome_empresa,
             'tecnologia': tecnologia,
@@ -28,10 +32,12 @@ def cadastrar_projetos():
             'imagem_id': imagem_id,
             'data': datetime.datetime.now()
         })
-        flash('Projeto cadastrado com sucesso', 'success')
+
+        flash('Projeto cadastrado com sucesso!', 'success')
         return redirect(url_for('projetos_auth.listar_projetos'))
-        nome_usuario = current_user.nome
+
     return render_template('cadastrar_projetos.html')
+
 
 
 # ✅ Listagem dos projetos
