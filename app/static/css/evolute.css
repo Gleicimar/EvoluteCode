@@ -480,7 +480,7 @@ textarea{
 
 }
 .box_wrapper{
-    width:350px;
+    width:360px;
     border:1px solid var(--gray-neutral);
     background:white;
     margin:1.8rem;
@@ -501,6 +501,11 @@ textarea{
 .box_wrapper a{
     color:var(--blue-light);
     font-size:1.1rem
+}
+.actions{
+    display:flex;
+    justify-content: space-between;
+    margin-top:1rem
 }
 /*consultar*/
 .projetos{

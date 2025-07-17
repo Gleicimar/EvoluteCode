@@ -45,8 +45,12 @@ def cadastrar_projetos():
 @login_required
 def listar_projetos():
     projetos_list = list(db.projetos.find({}))
-  
+    print(f"Total de projetos encontrados: {len(projetos_list)}") 
     return render_template('consultar_projetos.html', projetos=projetos_list )
+def buscar_todos_projetos():
+    projetos_list = list(db.projetos.find({}))
+    print(f"Total de projetos encontrados: {len(projetos_list)}") 
+    return projetos_list
 
 # ✅ Exibir imagem via GridFS
 @projetos_auth.route('/imagem/<imagem_id>')

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% extends "painel.html" %}
+
+{% block content %}
+<section class="projetos">
+    <div class="center">
+        <h1>Usuários</h1>
+        {% if usuarios %}
+        <h2>Total de usuários: {{ total }}</h2>
+
+            <ul>
+            {% for usuario in usuarios %}
+            <li>{{ usuario.usuario }}</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>Nenhum usuário encontrado.</p>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
+

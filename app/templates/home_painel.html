@@ -7,21 +7,34 @@
         <h3 class="title"  >Seja bem vindo ao EvoluteCode</h3>
         <div class="box_wrapper">
             <h4>Métricas</h4>
-            <span>Usuario online: </span>
-            <a href="">Consultar </a>
+            <span>Usuario online: {{total}} </span>
+             <div class="actions">
+        <a href="{{ url_for('auth.cadastrar') }}" class="btn btn-primary">Cadastrar Usuario</a> <br>
+        <a href="{{ url_for('auth.listar_usuarios') }}" class="btn btn-secondary">Consultar Usuario</a>
+    </div>
         </div>
-        <div class="box_wrapper">
-            <h4>Projetos</h4>
-            {% if projetos %}
-              <span>quantidade </span>
-            {%endif%}
-            <a href="/painel/cadastrar_projetos">Cadastrar</a>
-            <a href="/painel/consultar_projetos">Consultar</a>
-        </div>
+      <div class="box_wrapper">
+    <h4>Gerenciamento de Projetos</h4>
+    
+    {% if projetos %}
+        <a><strong>Total de projetos:</strong>{{ projetos|length}}</a>
+         <span>quantidade de projetos:{{projetos|length}}</span>
+    {% else %}
+        <span>Nenhum projeto cadastrado ainda.</span>
+    {% endif %}
+    
+    <div class="actions">
+        <a href="{{ url_for('projetos_auth.cadastrar_projetos') }}" class="btn btn-primary">Cadastrar Projeto</a> <br>
+        <a href="{{ url_for('projetos_auth.listar_projetos') }}" class="btn btn-secondary">Consultar Projetos</a>
+    </div>
+</div>
         <div class="box_wrapper">
             <h4>Pendências</h4>
             <span>quantidade Pendente: 2</span>
-            <a href="painel/consultar_pendencias">Consultar</a>
+             <div class="actions">
+        <a href="" class="btn btn-primary">Consultar Pendencia</a> <br>
+        <a href="{{ url_for('projetos_auth.listar_projetos') }}" class="btn btn-secondary">Mudar status</a>
+    </div>
         </div>
    </div>
 </section>

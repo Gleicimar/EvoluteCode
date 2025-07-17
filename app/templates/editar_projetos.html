@@ -28,17 +28,17 @@
         <input type="text" name="nome_empresa" value="{{ projeto.nome_empresa }}" required>
 
         <label for="data_inicio">Data de Início:</label>
-        <input type="date" name="data_inicio" value="{{ projeto.data_inicio|safe }}" required>
+        <input type="date" name="data_inicio" value="{{ projeto.data_inicio.strftime('%Y-%m-%d') if projeto.data_inicio else '' }}" required>
 
         <label for="data_final">Data Final:</label>
-        <input type="date" name="data_final" value="{{ projeto.data_final|safe }}" required>
+        <input type="date" name="data_final" value="{{ projeto.data_final.strftime('%Y-%m-%d') if projeto.data_inicio else '' }}" required>
 
         <label for="descricao">Descrição:</label>
         <textarea name="descricao" rows="4" required>{{ projeto.descricao }}</textarea>
 
         <input type="submit" value="Salvar Edição" style="margin-top: 15px;">
 
-        <a href="{{ url_for('projetos_auth.listar_projetos') }}" style="display: block; margin-top: 10px;">
+        <a href="{{ url_for('projetos_auth.listar_projetos')}}" style="display: block; margin-top: 10px;">
             Voltar
         </a>
     </form>
