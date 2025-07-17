@@ -57,3 +57,71 @@ def exibir_imagem(imagem_id):
 
 # ⚠️ Ajuste: Essa função abaixo está errada (estava misturando HTML dentro da função).
 # Deixe a função de atualização separada com rota futura.
+
+@projetos_auth.route('/painel/deletar_projetos/<projeto_id>')
+def deletar_projeto(projeto_id):
+    try:
+        projeto = db.projetos.find_one({'_id': ObjectId(projeto_id)})
+
+        if not projeto:
+            flash('Projeto não encontrado.', 'error')
+            return redirect(url_for('projetos_auth.listar_projetos'))
+
+        # Deleta a imagem no GridFS usando o imagem_id
+        if 'imagem_id' in projeto:
+            try:
+                imagem_id = ObjectId(projeto['imagem_id'])
+                fs.delete(imagem_id)
+            except Exception as e:
+                flash(f'Erro ao deletar a imagem no GridFS: {e}', 'warning')
+
+        # Deleta o projeto do banco
+        db.projetos.delete_one({'_id': ObjectId(projeto_id)})
+
+        flash('Projeto deletado com sucesso!', 'success')
+    except Exception as e:
+        flash(f'Ocorreu um erro ao deletar o projeto: {e}', 'error')
+
+    return redirect(url_for('projetos_auth.listar_projetos'))
+@projetos_auth.route('/painel/editar_projetos/<projeto_id>',methods=['GET', 'POST'])
+def editar_projetos(projeto_id):
+    projeto=db.projetos.find_one({'_id': ObjectId(projeto_id)})
+    if not projeto:
+        flash('Projeto não encontrado.', 'error')
+        return redirect(url_for('projetos_auth.listar_projetos'))
+
+    if request.method=='POST':
+        nome_empresa = request.form.get('nome_empresa')
+        tecnologia = request.form.get('tecnologia')
+        descricao = request.form.get('descricao')
+        novo_arquivo = request.files.get('imagem')
+        data_inicio = request.form.get('data_inicio')
+        data_final = request.form.get('data_final')
+        
+         # Atualiza campos básicos
+        update_data = {
+            'nome_empresa': nome_empresa,
+            'tecnologia': tecnologia,
+            'descrição': descricao,
+            'data_inicio': data_inicio,
+            'data_final': data_final,
+        }
+        # Substitui a imagem no GridFS, se for enviada uma nova
+        if novo_arquivo and novo_arquivo.filename != '':
+                try:
+                    # Deleta a imagem antiga, se existir
+                    if 'imagem_id' in projeto:
+                        fs.delete(ObjectId(projeto['imagem_id']))
+
+                    # Salva nova imagem
+                    imagem_id = fs.put(novo_arquivo, filename=novo_arquivo.filename, content_type=novo_arquivo.content_type)
+                    update_data['imagem_id'] = imagem_id
+                except Exception as e:
+                    flash(f'Erro ao atualizar a imagem: {e}', 'warning')
+             # Atualiza no banco
+        db.projetos.update_one({'_id': ObjectId(projeto_id)}, {'$set': update_data})
+        flash('Projeto atualizado com sucesso!', 'success')
+        return redirect(url_for('projetos_auth.listar_projetos'))
+
+    # GET: exibe o formulário preenchido
+    return render_template('editar_projetos.html', projeto=projeto)

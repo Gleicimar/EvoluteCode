@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% extends "painel.html" %}
+
+{% block content %}
+<div class="center" style="max-width: 600px; margin: auto; padding: 20px;">
+    <form method="POST" enctype="multipart/form-data">
+        <h2>Editar Projeto</h2>
+
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+        <!-- Imagem atual -->
+        <label>Imagem atual:</label>
+        {% if projeto.imagem_id %}
+            <img src="{{ url_for('projetos_auth.exibir_imagem', imagem_id=projeto.imagem_id) }}"
+                 alt="Imagem atual" style="max-width: 100%; margin-bottom: 15px; border-radius: 8px;">
+        {% else %}
+            <p>Nenhuma imagem disponível.</p>
+        {% endif %}
+
+        <!-- Nova imagem opcional -->
+        <label for="imagem">Nova imagem (opcional):</label>
+        <input type="file" name="imagem" accept="image/*" style="margin-bottom: 15px;">
+
+        <label for="tecnologia">Tecnologia:</label>
+        <input type="text" name="tecnologia" value="{{ projeto.tecnologia }}" required>
+
+        <label for="nome_empresa">Nome da empresa:</label>
+        <input type="text" name="nome_empresa" value="{{ projeto.nome_empresa }}" required>
+
+        <label for="data_inicio">Data de Início:</label>
+        <input type="date" name="data_inicio" value="{{ projeto.data_inicio|safe }}" required>
+
+        <label for="data_final">Data Final:</label>
+        <input type="date" name="data_final" value="{{ projeto.data_final|safe }}" required>
+
+        <label for="descricao">Descrição:</label>
+        <textarea name="descricao" rows="4" required>{{ projeto.descricao }}</textarea>
+
+        <input type="submit" value="Salvar Edição" style="margin-top: 15px;">
+
+        <a href="{{ url_for('projetos_auth.listar_projetos') }}" style="display: block; margin-top: 10px;">
+            Voltar
+        </a>
+    </form>
+</div>
+{% endblock %}
