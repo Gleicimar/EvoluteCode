@@ -74,6 +74,5 @@ def deletar(id):
             flash('Oportunidade não encontrada.','error')
     except Exception as e:
         flash(f'Erro ao excluir:{e}','error')
-    return
-        redirect(url_for('crm.listar_oportunidades'))
+    return redirect(url_for('crm.listar_oportunidades'))
 
