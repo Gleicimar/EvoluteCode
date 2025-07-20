@@ -6,14 +6,14 @@ import bleach
 import time 
 from flask_login import logout_user
 from app.models.mongo import db  # db pode ser o objeto mongo.db
-from app.routes.projetos_auth import buscar_todos_projetos # importe só o que for usar
+from app.routes.projetos_auth import buscar_todos_projetos, cadastrar_usuarios # importe só o que for usar
 auth = Blueprint('auth', __name__)
 
 #Configuração inicial 
 MAX_LOGIN_ATTEMPTS= 5
 LOCKOUT_TIME =300 #5 minutos para bloqueio
 
-@auth.route('/cadastrar',methods=["GET", "POST"]) 
+@auth.route('/registrar',methods=["GET", "POST"]) 
 def cadastrar():
     if request.method == 'POST':
        
@@ -27,15 +27,15 @@ def cadastrar():
 
         if not usuario or not senha or not confirmar_senha:
                 flash("😒 Por favor preencha todos os campos!", "error")
-                return render_template('cadastrar.html')
+                return render_template('registrar.html')
 
         if len(senha) < 6:
             flash("A senha deve ter pelo menos 6 caracteres.", "error")
-            return render_template('cadastrar.html')
+            return render_template('registrar.html')
 
         if senha != confirmar_senha:
             flash("As senhas não coincidem!", "error")
-            return render_template('cadastrar.html')
+            return render_template('registrar.html')
         sucesso = cadastrar_usuario(usuario, senha)
 
         if sucesso:
@@ -43,8 +43,8 @@ def cadastrar():
             return redirect(url_for('auth.login'))
         else:
             flash('⚠️ Usuário já cadastrado!', 'error')
-        return render_template('cadastrar.html')
-
+        return render_template('registrar.html')
+    return render_template('registrar.html')
         
 
 @auth.route('/login',methods=['GET', 'POST'])

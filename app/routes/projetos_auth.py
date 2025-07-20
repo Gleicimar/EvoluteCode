@@ -129,3 +129,37 @@ def editar_projetos(projeto_id):
 
     # GET: exibe o formulário preenchido
     return render_template('editar_projetos.html', projeto=projeto)
+
+@projetos_auth.route('/painel/cadastrar_usuarios',methods=["GET", "POST"]) 
+def cadastrar_usuarios():
+    if request.method == 'POST':
+       
+        usuario = request.form['usuario'].strip()
+        senha = request.form['senha'].strip()
+        confirmar_senha = request.form['confirmar_senha'].strip()
+        #sanitização de acessos
+        usuario = bleach.clean(usuario)
+        senha = senha
+        confirmar_senha = confirmar_senha
+
+        if not usuario or not senha or not confirmar_senha:
+                flash("😒 Por favor preencha todos os campos!", "error")
+                return render_template('cadastrar_usuariios.html')
+
+        if len(senha) < 6:
+            flash("A senha deve ter pelo menos 6 caracteres.", "error")
+            return render_template('cadastrar_usuarios.html')
+
+        if senha != confirmar_senha:
+            flash("As senhas não coincidem!", "error")
+            return render_template('cadastrar_usuarios.html')
+        sucesso = cadastrar_usuario(usuario, senha)
+
+        if sucesso:
+            flash('✅ Usuário cadastrado com sucesso! 😊', 'success')
+            return redirect(url_for('auth.login'))
+        else:
+            flash('⚠️ Usuário já cadastrado!', 'error')
+        return render_template('cadastrar_usuarios.html')
+    return render_template('cadastrar_usuarios.html')
+        

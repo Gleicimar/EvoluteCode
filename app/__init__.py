@@ -41,9 +41,11 @@ def create_app():
     from .routes.routes import main
     from  .routes.auth_routes import auth
     from  .routes.projetos_auth import projetos_auth
+    from  .routes.crm_route import crm
 
     
     app.register_blueprint(main)
     app.register_blueprint(auth)
     app.register_blueprint(projetos_auth)
+    app.register_blueprint(crm)
     return app

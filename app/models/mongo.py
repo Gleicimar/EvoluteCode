@@ -14,4 +14,5 @@ db = conexao['evolutecode']
 
 usuario  = db['usuarios']
 projetos = db['projetos']
+crm_oportubidades = db['crm_oportunidades']
 fs = GridFS(db)

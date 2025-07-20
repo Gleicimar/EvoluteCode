@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block content %}
+
+
+    <div class="center">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {%if messages %}
+            <ul class="flashes">
+                {%for category, message in messages%}
+                    <li class="{{category}}">{{message}}</li>
+                {%endfor%}
+            </ul>
+        {%endif%}
+    {%endwith%}
+    <form method="POST">
+        <h2>Realizar Registro</h2>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <label for="Usuario">Usuário:</label>
+        <input type="text" name="usuario" placeholder="Digite seu usuario">
+        <label for="Senha" >Senha:</label>
+        <input type="password" name="senha" placeholder="Digite sua senha">
+        <input type="password" name="confirmar_senha" placeholder="Confirme sua senha">
+        <input type="submit" value="Registrar" >
+        <a href="\login">
+        Voltar a login
+        </a>
+    </form>
+    </div>
+{% endblock %}

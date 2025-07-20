@@ -480,7 +480,7 @@ textarea{
 
 }
 .box_wrapper{
-    width:360px;
+    width:350px;
     border:1px solid var(--gray-neutral);
     background:white;
     margin:1.8rem;
@@ -555,7 +555,14 @@ textarea{
     font-size:1.1rem
 }
 
-
+/*estilo captura de lead*/
+        .center>h1 { color: #333; }
+        table { width: 100%; border-collapse: collapse; background: #fff; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #4CAF50; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        a { color: #4CAF50; text-decoration: none; }
+        a:hover { text-decoration: underline; }
 
 
 

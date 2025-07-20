@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% extends "painel.html" %}
+
+{% block content %}
+<div class="center" style="max-width: 600px; margin: auto; padding: 20px;">
+     <h1>Editar Oportunidades</h1>
+ 
+
+    <form action="{{ url_for('crm.editar_oportunidade', id=oportunidade['_id']) }}" method="POST">
+       <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <label for="cliente">Cliente:</label>
+        <input type="text" name="nome" id="cliente" value="{{ oportunidade['nome'] }}" required>
+
+        <label for="email">E-mail:</label>
+        <input type="email" name="email" id="email" value="{{ oportunidade['email'] }}" required>
+
+        <label for="telefone">Telefone:</label>
+        <input type="text" name="telefone" id="telefone" value="{{ oportunidade['telefone'] }}" required>
+
+        <label for="projeto">Projeto:</label>
+        <textarea name="projeto" id="projeto" rows="4">{{ oportunidade['projeto'] }}</textarea>
+
+        <label for="status">Status:</label>
+        <select name="status" id="status">
+            <option value="novo" {% if oportunidade['status'] == 'novo' %}selected{% endif %}>Novo</option>
+            <option value="em_contato" {% if oportunidade['status'] == 'em_contato' %}selected{% endif %}>Em Contato</option>
+            <option value="proposta_enviada" {% if oportunidade['status'] == 'proposta_enviada' %}selected{% endif %}>Proposta Enviada</option>
+            <option value="fechado" {% if oportunidade['status'] == 'fechado' %}selected{% endif %}>Fechado</option>
+            <option value="perdido" {% if oportunidade['status'] == 'perdido' %}selected{% endif %}>Perdido</option>
+        </select>
+
+        <label for="origem">Origem:</label>
+        <input type="text" name="origem" id="origem" value="{{ oportunidade['origem'] }}">
+
+        <label for="follow_up">Follow-up:</label>
+        <textarea name="follow_up" id="follow_up" rows="3">{{ oportunidade['follow_up'] }}</textarea>
+
+        <button type="submit">Salvar Alterações</button>
+        <a href="{{ url_for('crm.listar_oportunidades') }}">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

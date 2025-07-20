@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block content %}
+<div class="center">
+        <h1>Cadastrar Oportunidade</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <h2> Fazer Orçamento</h2>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <label for="nome" >Nome:</label>
+        <input type="text" name="nome" placeholder="Informe seu nome">
+
+        <label for="email" >Email:</label>
+        <input type="email" name="email" placeholder="Informe seu email">
+
+        <label for="telefone" >Telefone:</label>
+        <input type="text" name="telefone" placeholder="Informe seu telefone">
+
+        <label for="descricao" >Descrição do projeto:</label>
+        <textarea name="projeto" placeholder="Informe a descrição do projeto"></textarea>
+        <input type="hidden" name="origem" value="site">
+        <input type="hidden" name="status" value="novo">
+        <input type="datetime-local" name="data">
+        
+        <input type="submit" value="Enviar" >
+
+        <a href="/">
+        Voltar
+        </a>
+    </form>
+    </div>
+
+    {% endblock %}

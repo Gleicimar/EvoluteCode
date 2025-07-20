@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% extends "painel.html" %}
+
+{% block content %}
+<section class="projetos">
+    <div class="center">
+      
+    <h1>Oportunidades Cadastradas</h1>
+
+
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>Projeto</th>
+                <th>Origem</th>
+                <th>Status</th>
+                <th>Data</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for o in oportunidades %}
+            <tr>
+                <td>{{loop.index}}</td>
+                <td>{{ o.nome }}</td>
+                <td>{{ o.email }}</td>
+                <td>{{ o.telefone }}</td>
+                <td>{{ o.projeto }}</td>
+                <td>{{ o.origem }}</td>
+                <td>{{ o.status }}</td>
+                <td>{{ o.data.strftime('%d/%m/%Y %H:%M') if o.data else '' }}</td>
+                <td><a href="/editar_oportunidades/{{ o._id }}">Editar</a>
+                    <a href="/deletar_oportunidade/{{ o._id }}">Excluir</a>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="7">Nenhuma oportunidade cadastrada ainda.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</section>
+{% endblock %}
+
