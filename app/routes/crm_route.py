@@ -62,3 +62,18 @@ def editar_oportunidade(id):
         return redirect(url_for('crm.listar_oportunidades'))
 
     return render_template('/editar_oportunidades.html', oportunidade=oportunidade)
+
+@crm.route('/editar_oportunidades/<id>', methods=['GET', 'POST'])
+@login_required
+def deletar(id):
+    try:
+        resultado = oportunidades.delete_one({'_id':ObjectId(id)})
+        if  resultado.deleted_count==1:
+            flash('Oportunidade excluida com sucesso!', 'success')
+        else:
+            flash('Oportunidade não encontrada.','error')
+    except Exception as e:
+        flash(f'Erro ao excluir:'{e},'error')
+    return
+        redirect(url_for('crm.listar_oportunidades'))
+        
