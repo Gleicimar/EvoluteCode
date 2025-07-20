@@ -20,19 +20,19 @@ def cadastrar_oportunidade():
         followup = []
 
         oportunidade = OportunidadeModel(
-            nome=nome,
-            email=email,
-            telefone=telefone,
-            projeto=projeto,
-            origem=origem,
-            status=status,
-            followup=followup,
-            data=data
+            nome = nome,
+            email = email,
+            telefone = telefone,
+            projeto = projeto,
+            origem = origem,
+            status = status,
+            followup = followup,
+            data = data
         )
 
         oportunidade.salvar()
         flash("Oportunidade cadastrada com sucesso!", "success")
-        return redirect(url_for("crm.listar_oportunidades"))
+        
     
     return render_template("cadastrar_oportunidade.html")
 
@@ -67,12 +67,12 @@ def editar_oportunidade(id):
 @login_required
 def deletar(id):
     try:
-        resultado = oportunidades.delete_one({'_id':ObjectId(id)})
-        if  resultado.deleted_count==1:
+        oportunidade = db.oportunidades.delete_one({'_id':ObjectId(id)})
+        if  oportunidade.deleted_count==1:
             flash('Oportunidade excluida com sucesso!', 'success')
         else:
             flash('Oportunidade não encontrada.','error')
     except Exception as e:
-        flash(f'Erro ao excluir:{e}','error')
+            flash(f'Erro ao excluir:{e}','error')
     return redirect(url_for('crm.listar_oportunidades'))
 

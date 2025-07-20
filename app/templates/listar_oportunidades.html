@@ -5,8 +5,8 @@
 <section class="projetos">
     <div class="center">
       
-    <h1>Oportunidades Cadastradas</h1>
-
+    <h1>Oportunidades Cadastradas: {{oportunidades| length}}</h1>
+       
 
                     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
@@ -36,8 +36,8 @@
                 <td>{{ o.origem }}</td>
                 <td>{{ o.status }}</td>
                 <td>{{ o.data.strftime('%d/%m/%Y %H:%M') if o.data else '' }}</td>
-                <td><a href="/editar_oportunidades/{{ o._id }}">Editar</a>
-                    <a href="/deletar_oportunidade/{{ o._id }}">Excluir</a>
+                <td><a href="/editar_oportunidades/{{ o._id }}"><i class="fas fa-pencil"></i> Editar</a>
+                    <a href="/deletar/{{ o._id }}"> <i class="fas fa-trash"></i> Excluir</a>
                 </td>
             </tr>
             {% else %}

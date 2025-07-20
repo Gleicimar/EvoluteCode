@@ -27,8 +27,8 @@
 
             <nav id="menu">
                 <ul>
-                <li><a href="{{url_for('auth.painel_view')}}">Home</a></li>
-                <li><a href="{{url_for('auth.login')}}">Sair</a></li>
+                <li><a href="{{url_for('auth.painel_view')}}"> <i class="fa-solid fa-home"></i> Home</a></li>
+                <li><a href="{{url_for('auth.login')}}"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
                 </ul>
             </nav>
             <h4>Olá, {{session['usuario']['nome']}}!</h4>

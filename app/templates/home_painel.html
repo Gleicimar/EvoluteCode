@@ -10,8 +10,8 @@
             <span>Usuario online: {{total}} </span>
             
              <div class="actions">
-        <a href="{{ url_for('projetos_auth.cadastrar_usuarios') }}" class="btn btn-primary">Cadastrar Usuario</a> <br>
-        <a href="{{ url_for('auth.listar_usuarios') }}" class="btn btn-secondary">Consultar Usuario</a>
+        <a href="{{ url_for('projetos_auth.cadastrar_usuarios') }}" class="btn btn-primary"><i class="fas fa-user-plus"></i> Cadastrar Usuario</a> <br>
+        <a href="{{ url_for('auth.listar_usuarios') }}" class="btn btn-secondary"> <i class="fas fa-list"></i>Consultar Usuario</a>
     </div>
         </div>
       <div class="box_wrapper">
@@ -25,16 +25,15 @@
     {% endif %}
     
     <div class="actions">
-        <a href="{{ url_for('projetos_auth.cadastrar_projetos') }}" class="btn btn-primary">Cadastrar Projeto</a> <br>
-        <a href="{{ url_for('projetos_auth.listar_projetos') }}" class="btn btn-secondary">Consultar Projetos</a>
+        <a href="{{ url_for('projetos_auth.cadastrar_projetos') }}" class="btn btn-primary"><i class="fas fa-project-diagram "></i>  Cadastrar Projeto</a> <br>
+        <a href="{{ url_for('projetos_auth.listar_projetos') }}" class="btn btn-secondary"><i class="fa-solid fa-paper"></i>Consultar Projetos</a>
     </div>
 </div>
         <div class="box_wrapper">
             <h4>Pendências</h4>
-            <span>quantidade Pendente: 2</span>
-             <div class="actions">
-        <a href="" class="btn btn-primary">Consultar Pendencia</a> <br>
-        <a href="{{ url_for('projetos_auth.listar_projetos') }}" class="btn btn-secondary">Mudar status</a>
+        <span> quantidade de oportunidades: {{ quantidade|length }}</span>
+    <div class="actions">
+        <a href="{{ url_for('crm.listar_oportunidades')}}" class="btn btn-primary"><i class="fa-solid fa-list-check"></i> Consultar Pendencia</a> <br>
     </div>
         </div>
    </div>

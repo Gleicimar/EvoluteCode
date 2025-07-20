@@ -5,7 +5,4 @@ main = Blueprint('main', __name__)
 def home():
     return render_template('home.html')
 
-@main.route('/orcamento', methods=['GET', 'POST'])
-def orcamento():
-    return render_template('orcamento.html')
 
