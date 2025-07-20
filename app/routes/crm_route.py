@@ -37,11 +37,13 @@ def cadastrar_oportunidade():
     return render_template("cadastrar_oportunidade.html")
 
 @crm.route('/listar_oportunidades')
+@login_required
 def listar_oportunidades():
     oportunidades = OportunidadeModel.listar()
     return render_template("listar_oportunidades.html", oportunidades=oportunidades)
 
 @crm.route('/editar_oportunidades/<id>', methods=['GET', 'POST'])
+@login_required
 def editar_oportunidade(id):
     oportunidade = db.oportunidades.find_one({'_id': ObjectId(id)})
 

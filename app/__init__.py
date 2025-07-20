@@ -38,7 +38,7 @@ def create_app():
         if usuario_data:
            return User(usuario_data)
         return None
-    from .routes.routes import main
+    from  .routes.routes import main
     from  .routes.auth_routes import auth
     from  .routes.projetos_auth import projetos_auth
     from  .routes.crm_route import crm
