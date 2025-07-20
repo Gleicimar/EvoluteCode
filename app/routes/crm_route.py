@@ -63,7 +63,7 @@ def editar_oportunidade(id):
 
     return render_template('/editar_oportunidades.html', oportunidade=oportunidade)
 
-@crm.route('/editar_oportunidades/<id>', methods=['GET', 'POST'])
+@crm.route('/deletar/<id>', methods=['GET', 'POST'])
 @login_required
 def deletar(id):
     try:
@@ -76,4 +76,4 @@ def deletar(id):
         flash(f'Erro ao excluir:'{e},'error')
     return
         redirect(url_for('crm.listar_oportunidades'))
-        
+
