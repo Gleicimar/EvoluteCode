@@ -17,16 +17,12 @@ Menu.addEventListener("click", ()=>{
 
 /*fechar mensagem */
 
-document.getElementById('fechar').addEventListener('click', fechar)
-
-document.addeventListener('keydown', (e)=>{
-    if(e.key === 'Escape'){
-        Fechar()
-    }
-})
-
-
-function Fechar(){
-    const  FecharMensagem = document.getElementById('fechar');
-
-}
+  // Espera 4 segundos e remove a mensagem flash
+  setTimeout(function() {
+    const flashes = document.querySelectorAll('.flashes li');
+    flashes.forEach(function(flash) {
+      flash.style.transition = "opacity 1s ease-out";
+      flash.style.opacity = "0";
+      setTimeout(() => flash.remove(), 1000); // remove do DOM após desaparecer
+    });
+  }, 4000); // tempo em milissegundos (4000ms = 4 segundos)

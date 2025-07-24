@@ -6,7 +6,8 @@ import bleach
 import time 
 from flask_login import logout_user
 from app.models.mongo import db  # db pode ser o objeto mongo.db
-from app.routes.projetos_auth import buscar_todos_projetos, cadastrar_usuarios # importe só o que for usar
+from app.routes.crm_route import buscar_oportunidades
+from app.routes.projetos_auth import buscar_todos_projetos, cadastrar_usuarios# importe só o que for usar
 auth = Blueprint('auth', __name__)
 
 #Configuração inicial 
@@ -104,7 +105,8 @@ def painel_view():
     nome_usuario = session['usuario']['nome']
     usuarios = buscar_usuarios()  # pega lista de usuários
     projetos = buscar_todos_projetos()  # função importada da outra rota
-    return render_template('home_painel.html', nome=nome_usuario, quantidade_usuarios=len(usuarios), projetos=projetos)
+    oportunidades =  buscar_oportunidades() # função importada da outra rota
+    return render_template('home_painel.html', nome=nome_usuario, quantidade_usuarios=len(usuarios), projetos=projetos, oportunidades=oportunidades)
 
 
 @auth.route('/painel/listar_usuarios')

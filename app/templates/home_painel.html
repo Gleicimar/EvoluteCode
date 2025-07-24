@@ -7,7 +7,8 @@
         <h3 class="title"  >Seja bem vindo ao EvoluteCode</h3>
         <div class="box_wrapper">
             <h4>Métricas</h4>
-            <span>Usuario online: {{total}} </span>
+            <span>Usuario online: {{ quantidade_usuarios }} </span>
+            
             
              <div class="actions">
         <a href="{{ url_for('projetos_auth.cadastrar_usuarios') }}" class="btn btn-primary"><i class="fas fa-user-plus"></i> Cadastrar Usuario</a> <br>
@@ -31,7 +32,7 @@
 </div>
         <div class="box_wrapper">
             <h4>Pendências</h4>
-        <span> quantidade de oportunidades: {{ quantidade|length }}</span>
+        <span> quantidade de oportunidades: {{oportunidades| length}}</span>
     <div class="actions">
         <a href="{{ url_for('crm.listar_oportunidades')}}" class="btn btn-primary"><i class="fa-solid fa-list-check"></i> Consultar Pendencia</a> <br>
     </div>

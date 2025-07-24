@@ -21,7 +21,7 @@
                         <div class="controle">
                             <a href="{{ url_for('projetos_auth.editar_projetos', projeto_id=projeto._id) }}" class="btn_controle">Editar</a>
                             <a  href="{{ url_for('projetos_auth.deletar_projeto', projeto_id=projeto._id) }}"
-                            onclick="return confirm('Tem certeza que deseja excluir este projeto?');"class="btn_controle ex">Excluir</a>
+                                onclick="return confirm('Tem certeza que deseja excluir este projeto?');"class="btn_controle ex">Excluir</a>
                         </div>
                         {% endif %}
                         

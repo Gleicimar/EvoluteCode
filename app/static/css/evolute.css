@@ -394,9 +394,30 @@ footer>.center{
     background: var(--blue-primary);
 }
 .error{
-background: rgba(255, 0, 0, 0.377);
+background: rgba(255, 0, 0, 0.712);
 
 }
+
+.flashes {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.flashes .success {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 10px;
+  border: 1px solid #c3e6cb;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  opacity: 1;
+  transition: opacity 1s ease-out;
+}
+.flashes .error {
+      color: white;
+}
+
 
 
 .login{

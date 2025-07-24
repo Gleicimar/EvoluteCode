@@ -5,6 +5,7 @@ from werkzeug.utils import secure_filename
 from app.models.mongo import db, fs
 from app.routes.crm_route import  listar_oportunidades, editar_oportunidade, deletar
 import datetime
+import bleach
 
 projetos_auth = Blueprint('projetos_auth', __name__)
 
@@ -154,7 +155,7 @@ def cadastrar_usuarios():
         if senha != confirmar_senha:
             flash("As senhas não coincidem!", "error")
             return render_template('cadastrar_usuarios.html')
-        sucesso = cadastrar_usuario(usuario, senha)
+        sucesso = salvar_usuario(usuario, senha)
 
         if sucesso:
             flash('✅ Usuário cadastrado com sucesso! 😊', 'success')
@@ -164,3 +165,6 @@ def cadastrar_usuarios():
         return render_template('cadastrar_usuarios.html')
     return render_template('cadastrar_usuarios.html')
         
+def salvar_usuario(usuario, senha):
+    ...
+    return True 

@@ -31,8 +31,9 @@ def cadastrar_oportunidade():
         )
 
         oportunidade.salvar()
-        flash("Oportunidade cadastrada com sucesso!", "success")
-        
+        flash("Solicitação cadastrada com sucesso!", "success")
+   
+
     
     return render_template("cadastrar_oportunidade.html")
 
@@ -41,7 +42,8 @@ def cadastrar_oportunidade():
 def listar_oportunidades():
     oportunidades = OportunidadeModel.listar()
     return render_template("listar_oportunidades.html", oportunidades=oportunidades)
-
+def buscar_oportunidades():
+    return list(db.oportunidades.find({}))
 @crm.route('/editar_oportunidades/<id>', methods=['GET', 'POST'])
 @login_required
 def editar_oportunidade(id):
