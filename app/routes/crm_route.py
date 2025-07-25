@@ -79,7 +79,7 @@ def deletar(id):
     return redirect(url_for('crm.listar_oportunidades'))
 
 
-@crm.route('/oportunidade/<id>', methods=['GET', 'POST'])
+@crm.route('/detalhes_oportunidades/<id>', methods=['GET', 'POST'])
 @login_required
 def visualizar_detalhes_oportunidade(id):
     oportunidade = db.oportunidades.find_one({'_id': ObjectId(id)})
