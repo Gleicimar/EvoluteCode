@@ -7,6 +7,8 @@
     --blue-gray: #B7DDE8;
     --blue-very-dark: #0A2533;
     --gray-neutral: #F2F2F2;
+    --red-primary: #FF4B4B;
+    --green-primary: #00C853;
 }
 
 *{
@@ -602,10 +604,35 @@ textarea{
         th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
         th { background-color:var(--blue-primary); color: white; }
         tr:nth-child(even) { background-color: #f2f2f2; }
-        a { color: var(--blue-primary); text-decoration: none; }
+       td> a { color: var(--blue-primary); text-decoration: none; display:inline-block}
         a:hover { text-decoration: underline; }
 
-
+.status{
+     font-weight: bold;
+    padding: 2px;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+}
+.status.novo{
+    background-color:var(--green-primary);;
+}
+.status.em_contato{
+    background-color:#b4b21c;
+    
+}
+.status.concluido{
+    background-color:var(--blue-gray);
+    color: white;
+}
+.status.fechado{
+    background-color:var(--red-primary);
+    color: white;
+}
+.status.perdido{
+    background-color:black;
+    
+}
 
 @media screen and (max-width:968px) {
     header{

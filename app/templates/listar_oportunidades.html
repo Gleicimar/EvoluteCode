@@ -34,12 +34,12 @@
                             <td>{{ o.telefone }}</td>
                             <td>{{ o.projeto }}</td>
                             <td>{{ o.origem }}</td>
-                            <td>{{ o.status }}</td>
+                            <td class="status {{ o.status }}">{{ o.status }}</td>
                             <td>{{ o.data.strftime('%d/%m/%Y %H:%M') if o.data else '' }}</td>
                             <td>
-                                <a href="{{ url_for('crm.visualizar_detalhes_oportunidade', id=o._id) }}"><i class="fas fa-journal"></i> Detalhes</a>
-                                <a href="/editar_oportunidades/{{ o._id }}"><i class="fas fa-pencil"></i> Editar</a>
-                                <a href="/deletar/{{ o._id }}"> <i class="fas fa-trash"></i> Excluir</a>
+                                <a href="{{ url_for('crm.visualizar_detalhes_oportunidade', id=o._id) }}">🕵️‍♂️ Detalhes</a>
+                                <a href="/editar_oportunidades/{{ o._id }}">🖋️ Editar</a>
+                                <a href="/deletar/{{ o._id }}"> 🗑️ Excluir</a>
                             </td>
                         </tr>
                         {% else %}

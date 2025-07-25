@@ -15,17 +15,18 @@
     <p><strong>Data:</strong> {{ oportunidade.data.strftime('%d/%m/%Y %H:%M') if oportunidade.data }}</p>
 
     <h3>Histórico de Follow-ups</h3>
-    {% if oportunidade.followup %}
-        <ul>
-            {% for f in oportunidade.followup %}
-                <li>
-                    <strong>{{ f.data.strftime('%d/%m/%Y %H:%M') if f.data }}</strong>: {{ f.mensagem }}
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>Nenhum follow-up registrado.</p>
-    {% endif %}
+{% if oportunidade.followup %}
+    <ul>
+        {% for f in oportunidade.followup %}
+            <li>
+                <strong>{{ f.data }}</strong> — <em>{{ f.autor or "Desconhecido" }}</em>: {{ f.descricao }}
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Nenhum follow-up registrado.</p>
+{% endif %}
+    
 
     <a href="{{ url_for('crm.listar_oportunidades') }}" class="btn">Voltar</a>
 </div>
