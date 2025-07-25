@@ -78,3 +78,12 @@ def deletar(id):
             flash(f'Erro ao excluir:{e}','error')
     return redirect(url_for('crm.listar_oportunidades'))
 
+
+@crm.route('/oportunidade/<id>', methods=['GET', 'POST'])
+@login_required
+def visualizar_detalhes_oportunidade(id):
+    oportunidade = db.oportunidades.find_one({'_id': ObjectId(id)})
+    if not oportunidade:
+        flash("Ah não 🥹! Oportunidade não encontrada!")
+        return redirect(url_for('crm.listar_oportunidades'))
+    return render_template('detalhes_oportunidade.html', oportunidade=oportunidade)

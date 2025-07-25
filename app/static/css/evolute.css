@@ -492,7 +492,8 @@ textarea{
 .container_painel{
       display:flex;
     flex-wrap: wrap;
-    padding: 3rem   
+    padding: 3rem  ;
+    place-items: center;
 }
 .title{
         margin-top: 1.3rem;
@@ -501,7 +502,8 @@ textarea{
 
 }
 .box_wrapper{
-    width:350px;
+    width: 100%;
+    max-width:300px;
     border:1px solid var(--gray-neutral);
     background:white;
     margin:1.8rem;
@@ -575,9 +577,27 @@ textarea{
     color:var(--blue-light);
     font-size:1.1rem
 }
+.oportunidades{
+    background-color:var(--blue-gray);
+    height: 100vh;
+    text-align: center;
+}
+.oportunidades h1{
+    width: 100%;
+    margin:2rem auto;
+    color: #333; }
+
+.table_res{
+     width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+   
+}
 
 /*estilo captura de lead*/
-        .center>h1 { color: #333; }
+        
         table { width: 100%; margin-top: 30px;; border-collapse: collapse; background: #fff; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
         th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
         th { background-color:var(--blue-primary); color: white; }
@@ -682,6 +702,8 @@ transition: all 0.3s ease-in-out;
         grid-template-columns: 1fr ;
     
     }
+    
+ 
     footer >.center{
         grid-template-columns: 1fr;
     }

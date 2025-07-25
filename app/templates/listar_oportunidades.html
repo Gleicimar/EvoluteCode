@@ -2,7 +2,7 @@
 {% extends "painel.html" %}
 
 {% block content %}
-<section class="projetos">
+<section class="projetos oportunidades">
     <div class="center">
       
          <h1>Oportunidades Cadastradas: {{oportunidades| length}}</h1>
@@ -10,7 +10,7 @@
 
                     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
-        <div class="tb_display">
+        <div class="tb_display table_res">
                 <table>
                     <thead>
                         <tr>
@@ -36,7 +36,9 @@
                             <td>{{ o.origem }}</td>
                             <td>{{ o.status }}</td>
                             <td>{{ o.data.strftime('%d/%m/%Y %H:%M') if o.data else '' }}</td>
-                            <td><a href="/editar_oportunidades/{{ o._id }}"><i class="fas fa-pencil"></i> Editar</a>
+                            <td>
+                                <a href="{{ url_for('crm.visualizar_detalhes_oportunidade', id=o._id) }}"><i class="fas fa-journal"></i> Detalhes</a>
+                                <a href="/editar_oportunidades/{{ o._id }}"><i class="fas fa-pencil"></i> Editar</a>
                                 <a href="/deletar/{{ o._id }}"> <i class="fas fa-trash"></i> Excluir</a>
                             </td>
                         </tr>

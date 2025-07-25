@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% extends "painel.html" %}
+
+{% block content %}
+<section class="projetos  oportunidades_detalhes">
+<div class="center">
+    <h2>Detalhes da Oportunidade</h2>
+
+    <p><strong>Nome:</strong> {{ oportunidade.nome }}</p>
+    <p><strong>Email:</strong> {{ oportunidade.email }}</p>
+    <p><strong>Telefone:</strong> {{ oportunidade.telefone }}</p>
+    <p><strong>Projeto:</strong> {{ oportunidade.projeto }}</p>
+    <p><strong>Origem:</strong> {{ oportunidade.origem }}</p>
+    <p><strong>Status:</strong> {{ oportunidade.status }}</p>
+    <p><strong>Data:</strong> {{ oportunidade.data.strftime('%d/%m/%Y %H:%M') if oportunidade.data }}</p>
+
+    <h3>Histórico de Follow-ups</h3>
+    {% if oportunidade.followup %}
+        <ul>
+            {% for f in oportunidade.followup %}
+                <li>
+                    <strong>{{ f.data.strftime('%d/%m/%Y %H:%M') if f.data }}</strong>: {{ f.mensagem }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nenhum follow-up registrado.</p>
+    {% endif %}
+
+    <a href="{{ url_for('crm.listar_oportunidades') }}" class="btn">Voltar</a>
+</div>
+</section>
+
+{% endblock %}
