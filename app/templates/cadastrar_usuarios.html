@@ -19,11 +19,13 @@
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <label for="Usuario">Usuário:</label>
         <input type="text" name="usuario" placeholder="Digite seu usuario">
+         <label for="Usuario">Cargo:</label>
+        <input type="text" name="cargo" placeholder="Digite cargo">
         <label for="Senha" >Senha:</label>
         <input type="password" name="senha" placeholder="Digite sua senha">
         <input type="password" name="confirmar_senha" placeholder="Confirme sua senha">
         <input type="submit" value="Cadastrar" >
-        <a href="\painel">
+        <a href="{{ url_for('auth.painel_view') }}">  
         Voltar a Home do painel
         </a>
     </form>

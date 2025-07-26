@@ -530,6 +530,7 @@ textarea{
 }
 .actions{
     display:flex;
+    flex-direction: column;
     justify-content: space-between;
     margin-top:1rem
 }
@@ -560,7 +561,7 @@ textarea{
 .projeto_item{
     margin: 20px;
     overflow: hidden;
-    
+     
     max-width: 300px;
     border: 1px solid var(--blue-gray);
     border-radius: 1.2rem;
@@ -722,6 +723,8 @@ textarea{
     header{
         text-align:center
     }
+   
+    
     .banner,.services,.sobre,.status,.cta,footer{
         display: flex;
     }
@@ -771,8 +774,7 @@ transition: all 0.3s ease-in-out;
     .header-container{
         flex-direction: column;
     }
-    
-    
+   
     
     .banner,.services,.sobre,.status,.cta,footer{
         display: flex;

@@ -28,12 +28,19 @@ def autenticar_usuario(usuario, senha):
     flash("Usuário ou senha incorretos", 'error')
     return None
 
-def cadastrar_usuario(usuario, senha):
+def registrar_usuario(usuario, senha):
     if db.usuarios.find_one({"usuario": usuario}):
         flash("Usuário já cadastrado", "error")
         return False
     senha_hash = bcrypt.hash(senha)
     db.usuarios.insert_one({"usuario": usuario, "senha": senha_hash})
+    return True
+def cadastrar_usuario(usuario, cargo, senha):
+    if db.usuarios_sistema.find_one({"usuario": usuario}):
+        flash("Usuário já cadastrado", "error")
+        return False
+    senha_hash = bcrypt.hash(senha)
+    db.usuarios_sistema.insert_one({"usuario": usuario, "cargo":cargo, "senha": senha_hash})
     return True
 
 def atualizar_usuario(usuario, nova_senha):
