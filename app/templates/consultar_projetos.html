@@ -13,15 +13,16 @@
                             <img src="{{ url_for('projetos_auth.exibir_imagem', imagem_id=projeto.imagem_id) }}"
                                  alt="Imagem do projeto" >
                         {% endif %}
-                        
-                        <span>{{ projeto.tecnologia }}</span>
-                        <h4>{{ projeto.nome_empresa }}</h4>
-                        <p>{{ projeto.descricao }}</p>
-                        {%if projeto.imagem_id%}
-                        <div class="controle">
-                            <a href="{{ url_for('projetos_auth.editar_projetos', projeto_id=projeto._id) }}" class="btn_controle">Editar</a>
-                            <a  href="{{ url_for('projetos_auth.deletar_projeto', projeto_id=projeto._id) }}"
-                                onclick="return confirm('Tem certeza que deseja excluir este projeto?');"class="btn_controle ex">Excluir</a>
+                        <div class="info_pro">
+                            <span class="tec">{{ projeto.tecnologia }}</span>
+                            <h4>{{ projeto.nome_empresa }}</h4>
+                            <p>{{ projeto.descricao }}</p>
+                            {%if projeto.imagem_id%}
+                            <div class="controle">
+                                <a href="{{ url_for('projetos_auth.editar_projetos', projeto_id=projeto._id) }}" class="btn_controle">🖋️ Editar</a>
+                                <a  href="{{ url_for('projetos_auth.deletar_projeto', projeto_id=projeto._id) }}"
+                                    onclick="return confirm('Tem certeza que deseja excluir este projeto?');"class="btn_controle ex"> 🗑️ Excluir</a>
+                            </div>
                         </div>
                         {% endif %}
                         

@@ -475,6 +475,7 @@ input[type='submit']:hover{
 textarea{
     margin-bottom:3rem;
     resize: vertical;
+    padding-left: 10px;
 }
 /*Painel home*/
 .header_painel{
@@ -533,38 +534,62 @@ textarea{
     margin-top:1rem
 }
 /*consultar*/
+.center span{
+    display:block;
+    text-align:center;
+    font-size:1.2rem;
+    margin-bottom:1rem;
+    width:100%;
+}
 .projetos{
     background-color:var(--gray-neutral);
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
 }
 .projetos h2{ 
     text-align:center;
     color: var(--blue-very-dark);
     padding: 20px;
-    font-size: 38px;
+    font-size: 3rem;
     width:100%;
-    font-size:22px;
+    
 }
 .projeto_wrapper{
     display:flex;
-    flex-wrap: wrap;
 }
 .projeto_item{
     margin: 20px;
     overflow: hidden;
+    
+    max-width: 300px;
+    border: 1px solid var(--blue-gray);
+    border-radius: 1.2rem;
    
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
 }
 
 .projeto_item img{
     width: 250px;
-    max-width:100%;;
-    border:1px solid var(--blue-gray);
+    max-width:100%;
+    height: 100%;
+    max-height: 250px;
 }
-.projeto_item span{
+.info_pro{
+    background-color: white;
+    padding:1rem;
+   
+   
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+}
+.projeto_item .tec{
     display:block;
     font-size:1.2rem;
     width: 100%;
+    color: #0A2533;
    
 }
 .projeto_item h4,p{
@@ -581,7 +606,8 @@ textarea{
 }
 .oportunidades{
     background-color:var(--blue-gray);
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
     text-align: center;
 }
 .oportunidades h1{
@@ -632,6 +658,64 @@ textarea{
 .status.perdido{
     background-color:black;
     
+}
+.status.proposta_enviada{
+    background-color: rgb(23, 142, 197);
+}
+.status.cancelado{
+    background-color: rgb(108, 119, 124);}
+
+
+.status.pendente_info{
+    background-color: rgb(226, 211, 0);
+}
+.oportunidades_detalhes{
+    min-height: 100vh;
+    height: auto;
+}
+.center h3{
+    text-align: center;
+    width: 100%;
+    color: var(--blue-primary);
+    font-size: 1.7rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+.center> p{
+    text-align: center;
+    color: var(--blue-primary);
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+.center> a{
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 1rem;
+}
+.det{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    }
+.det_desc {
+    border: 2px solid var(--blue-primary);
+    border-radius: 5px;
+    width: 100%;
+    padding: 1rem;
+    margin: 1rem;
+    box-shadow: #0A2533 0.5rem 0.5rem;
+    }
+    .det_desc h3{
+        color: var(--blue-primary);
+        font-weight: bold;
+    }
+    .det_desc p{
+        color: var(--blue-very-dark);
+        font-weight: bold;
+    }
+    .det_desc span{
 }
 
 @media screen and (max-width:968px) {

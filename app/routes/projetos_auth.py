@@ -108,7 +108,7 @@ def editar_projetos(projeto_id):
         update_data = {
             'nome_empresa': nome_empresa,
             'tecnologia': tecnologia,
-            'descrição': descricao,
+            'descricao': descricao,
             'data_inicio': data_inicio,
             'data_final': data_final,
         }

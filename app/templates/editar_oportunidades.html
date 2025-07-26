@@ -25,6 +25,8 @@
             <option value="novo" {% if oportunidade['status'] == 'novo' %}selected{% endif %}>Novo</option>
             <option value="em_contato" {% if oportunidade['status'] == 'em_contato' %}selected{% endif %}>Em Contato</option>
             <option value="proposta_enviada" {% if oportunidade['status'] == 'proposta_enviada' %}selected{% endif %}>Proposta Enviada</option>
+            <option value="pendente_info" {% if oportunidade['status'] == 'pendente_info' %}selected{% endif %}>Pendente de informação</option>
+            <option value="cancelado" {% if oportunidade['status'] == 'cancelado' %}selected{% endif %}>Cancelado</option>
             <option value="fechado" {% if oportunidade['status'] == 'fechado' %}selected{% endif %}>Fechado</option>
             <option value="perdido" {% if oportunidade['status'] == 'perdido' %}selected{% endif %}>Perdido</option>
         </select>
@@ -35,7 +37,7 @@
         <label for="follow_up">Follow-up:</label>
         <textarea name="follow_up" id="follow_up" rows="3">{{ oportunidade['follow_up'] }}</textarea>
 
-        <button type="submit">Salvar Alterações</button>
+        <input type="submit" value="Salvar">
         <a href="{{ url_for('crm.listar_oportunidades') }}">Cancelar</a>
     </form>
 </div>

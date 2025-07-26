@@ -4,16 +4,18 @@
 {% block content %}
 <section class="projetos  oportunidades_detalhes">
 <div class="center">
-    <h2>Detalhes da Oportunidade</h2>
-
-    <p><strong>Nome:</strong> {{ oportunidade.nome }}</p>
-    <p><strong>Email:</strong> {{ oportunidade.email }}</p>
-    <p><strong>Telefone:</strong> {{ oportunidade.telefone }}</p>
-    <p><strong>Projeto:</strong> {{ oportunidade.projeto }}</p>
-    <p><strong>Origem:</strong> {{ oportunidade.origem }}</p>
-    <p><strong>Status:</strong> {{ oportunidade.status }}</p>
-    <p><strong>Data:</strong> {{ oportunidade.data.strftime('%d/%m/%Y %H:%M') if oportunidade.data }}</p>
-
+    <div class="det">
+         <h2>Detalhes da Oportunidade</h2>
+        <div class="det_desc">
+            <p> <strong> Nome:</strong> {{ oportunidade.nome }}</p>
+            <p><strong>Email:</strong> {{ oportunidade.email }}</p>
+            <p><strong>Telefone:</strong> {{ oportunidade.telefone }}</p>
+            <p><strong>Projeto:</strong> {{ oportunidade.projeto }}</p>
+            <p><strong>Origem:</strong> {{ oportunidade.origem }}</p>
+            <p><strong>Status:</strong> {{ oportunidade.status }}</p>
+            <p><strong>Data:</strong> {{ oportunidade.data.strftime('%d/%m/%Y %H:%M') if oportunidade.data }}</p>
+        </div>
+    </div>
     <h3>Histórico de Follow-ups</h3>
 {% if oportunidade.followup %}
     <ul>

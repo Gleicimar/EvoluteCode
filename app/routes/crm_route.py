@@ -17,7 +17,7 @@ def cadastrar_oportunidade():
         origem = request.form.get("origem", "site")
         status = request.form.get("status", "novo")
         data = datetime.utcnow()
-        followup = []
+        followup = []   
 
         oportunidade = OportunidadeModel(
             nome = nome,
