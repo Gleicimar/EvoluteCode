@@ -5,14 +5,17 @@ import bcrypt
 import bleach
 import time 
 from flask_login import logout_user
+from app.services.crm_service import CRMService
 from app.models.mongo import db  # db pode ser o objeto mongo.db
-from app.routes.crm_route import buscar_oportunidades
-from app.routes.projetos_auth import buscar_todos_projetos, cadastrar_usuarios# importe só o que for usar
+from app.services.oportunidade_service import listar_oportunidades_service
+from app.services.projeto_service import ProjetoService
+
 auth = Blueprint('auth', __name__)
 
 #Configuração inicial 
 MAX_LOGIN_ATTEMPTS= 5
 LOCKOUT_TIME =300 #5 minutos para bloqueio
+crm_service = CRMService()
 
 @auth.route('/painel/cadastrar_usuarios',methods=["GET", "POST"]) 
 def cadastrar_usuario_painel():
@@ -185,8 +188,9 @@ def painel_view():
         return redirect(url_for('auth.login'))
     nome_usuario = session['usuario']['nome']
     usuarios = buscar_usuarios()  # pega lista de usuários
-    projetos = buscar_todos_projetos()  # função importada da outra rota
-    oportunidades =  buscar_oportunidades() # função importada da outra rota
+    
+    projetos = ProjetoService.listar_todos_projetos()
+    oportunidades = crm_service.listar_oportunidades() # função importada da outra rota
     return render_template('home_painel.html', nome=nome_usuario, quantidade_usuarios=len(usuarios), projetos=projetos, oportunidades=oportunidades)
 
 

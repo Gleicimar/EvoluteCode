@@ -10,7 +10,7 @@
                 {% for projeto in projetos %}
                     <div class="projeto_item">
                         {% if projeto.imagem_id %}
-                            <img src="{{ url_for('projetos_auth.exibir_imagem', imagem_id=projeto.imagem_id) }}"
+                            <img src="{{ url_for('projetos_auth.route_exibir_imagem', imagem_id=projeto.imagem_id) }}"
                                  alt="Imagem do projeto" >
                         {% endif %}
                         <div class="info_pro">
@@ -19,8 +19,8 @@
                             <p>{{ projeto.descricao }}</p>
                             {%if projeto.imagem_id%}
                             <div class="controle">
-                                <a href="{{ url_for('projetos_auth.editar_projetos', projeto_id=projeto._id) }}" class="btn_controle">🖋️ Editar</a>
-                                <a  href="{{ url_for('projetos_auth.deletar_projeto', projeto_id=projeto._id) }}"class="btn_controle"> 🗑️ Excluir</a>
+                                <a href="{{ url_for('projetos_auth.route_editar_projeto', projeto_id=projeto._id) }}" class="btn_controle">🖋️ Editar</a>
+                                <a  href="{{ url_for('projetos_auth.route_deletar_projeto', projeto_id=projeto._id) }}"class="btn_controle"> 🗑️ Excluir</a>
                             </div>
                         </div>
                         {% endif %}

@@ -10,11 +10,36 @@
     --red-primary: #FF4B4B;
     --green-primary: #00C853;
 }
+@import url('https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+.tinos-regular {
+  font-family: "Tinos", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.tinos-bold {
+  font-family: "Tinos", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.tinos-regular-italic {
+  font-family: "Tinos", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.tinos-bold-italic {
+  font-family: "Tinos", serif;
+  font-weight: 700;
+  font-style: italic;
+}
 
 *{
     margin: 0;
     padding:0;
     box-sizing: border-box;
+    font-family: "Tinos", serif;
 }
 
 html,body{
@@ -717,6 +742,20 @@ textarea{
         font-weight: bold;
     }
     .det_desc span{
+}
+
+.follow-up li{
+    width:100%;
+        display: flex;
+    border: #0A2533 1px solid;
+    
+}
+.follow-up li {
+   display: flex;
+   flex-direction: row;
+    width: 100%;
+    color: var(--blue-primary);
+    padding: 1rem;
 }
 
 @media screen and (max-width:968px) {

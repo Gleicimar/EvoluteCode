@@ -18,19 +18,36 @@
     </div>
     <h3>Histórico de Follow-ups</h3>
 {% if oportunidade.followup %}
-    <ul>
+    <ul class="follow-up">
         {% for f in oportunidade.followup %}
-            <li>
-                <strong>{{ f.data }}</strong> — <em>{{ f.autor or "Desconhecido" }}</em>: {{ f.descricao }}
-            </li>
+            <div class="det_desc">
+                <li><strong>{{ f.data }}</strong> 
+                — <em>{{ f.autor or "Desconhecido" }}</em>: {{ f.descricao }} 
+            <a href="{{ url_for('crm.route_detalhes', id=oportunidade._id, editar_followup_id=f._id) }}">Editar</a>
+            <a href="{{ url_for('crm.route_detalhes', id=oportunidade._id, excluir_followup_id=f._id) }}"
+   onclick="return confirm('Tem certeza que deseja excluir este follow-up?')">Excluir</a>
+     </li>
+                   </div>
         {% endfor %}
     </ul>
 {% else %}
     <p>Nenhum follow-up registrado.</p>
 {% endif %}
+
+<form method="POST">
+ <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+{% if followup_para_editar %}
+        <input type="hidden" name="followup_id" value="{{ followup_para_editar['_id'] }}">
+        <textarea name="followup" placeholder="Editar o follow-up..." required>{{ followup_para_editar.descricao }}</textarea>
+        <button type="submit">Atualizar Follow-up</button>
+    {% else %}
+        <textarea name="followup" placeholder="Digite um novo follow-up..." required></textarea>
+        <button type="submit">Salvar Follow-up</button>
+    {% endif %}
+</form>
     
 
-    <a href="{{ url_for('crm.listar_oportunidades') }}" class="btn">Voltar</a>
+    <a href="{{ url_for('crm.route_listar_oportunidades') }}" class="btn">Voltar</a>
 </div>
 </section>
 
