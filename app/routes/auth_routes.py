@@ -199,6 +199,6 @@ def painel_view():
 
 def listar_usuarios():
     usuarios = buscar_usuarios()  # nome da função que busca no banco, que você deve definir
-    return render_template('listar_usuarios.html', usuarios=usuarios, total=len(usuarios))
+    return render_template('painel/listar_usuarios.html', usuarios=usuarios, total=len(usuarios))
 def buscar_usuarios():
      return list(db.usuarios_sistema.find({}))
