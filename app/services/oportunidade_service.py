@@ -40,7 +40,7 @@ def editar_oportunidade_service(id, req):
         atualizar_oportunidade(id, dados)
         flash('Oportunidade atualizada com sucesso!', 'success')
         return redirect(url_for('crm.route_listar_oportunidades'))
-    return render_template('editar_oportunidades.html', oportunidade=oportunidade)
+    return render_template('painel/editar_oportunidades.html', oportunidade=oportunidade)
 
 def deletar_oportunidade_service(id):
     sucesso = deletar_oportunidade(id)

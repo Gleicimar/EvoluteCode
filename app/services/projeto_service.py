@@ -1,4 +1,10 @@
-from flask import flash, redirect, url_for
+# services/projeto_service.py (refatorado para separar lógica de negócio e controle HTTP)
+from bson.objectid import ObjectId
+
+from flask import Response
+
+from app.models.mongo import db, fs
+
 from app.utils.imagem_utils import salvar_imagem, deletar_imagem
 from app.repositories.projeto_repository import (
     inserir_projeto,
@@ -11,27 +17,42 @@ import datetime
 
 class ProjetoService:
     @staticmethod
-    def cadastrar_projeto(req):
-        nome_empresa = req.form.get('nome_empresa', '').strip()
-        tecnologia = req.form.get('tecnologia', '').strip()
-        descricao = req.form.get('descricao', '').strip()
-        imagem = req.files.get('imagem')
+    def validar_dados_projeto(form, imagem_required=True):
+        nome_empresa = form.get('nome_empresa', '').strip()
+        tecnologia = form.get('tecnologia', '').strip()
+        descricao = form.get('descricao', '').strip()
 
-        if not nome_empresa or not tecnologia or not descricao or not imagem or not imagem.filename:
-            flash('Preencha todos os campos obrigatórios.', 'error')
-            return redirect(req.url)
+        if not nome_empresa or not tecnologia or not descricao:
+            return False, 'Preencha todos os campos obrigatórios.'
 
-        imagem_id = salvar_imagem(imagem)
-        projeto = {
-            'nome_empresa': nome_empresa,
-            'tecnologia': tecnologia,
-            'descricao': descricao,
-            'imagem_id': imagem_id,
+        if imagem_required:
+            imagem = form.get('imagem')
+            if not imagem or not imagem.filename:
+                return False, 'Imagem obrigatória.'
+
+        return True, ''
+
+    @staticmethod
+    def montar_dados_projeto(form, imagem_file=None, imagem_antiga_id=None):
+        dados = {
+            'nome_empresa': form.get('nome_empresa').strip(),
+            'tecnologia': form.get('tecnologia').strip(),
+            'descricao': form.get('descricao').strip(),
             'data': datetime.datetime.now()
         }
-        inserir_projeto(projeto)
-        flash('Projeto cadastrado com sucesso!', 'success')
-        return redirect(url_for('projetos_auth.route_listar_projetos'))
+
+        if imagem_file and imagem_file.filename:
+            if imagem_antiga_id:
+                deletar_imagem(imagem_antiga_id)
+            imagem_id = salvar_imagem(imagem_file)
+            dados['imagem_id'] = imagem_id
+
+        return dados
+
+    @staticmethod
+    def cadastrar_projeto_service(form, imagem_file):
+        dados = ProjetoService.montar_dados_projeto(form, imagem_file)
+        inserir_projeto(dados)
 
     @staticmethod
     def listar_todos_projetos():
@@ -42,44 +63,29 @@ class ProjetoService:
         return buscar_projeto(projeto_id)
 
     @staticmethod
-    def editar_projeto(projeto_id, req):
+    def editar_projeto_service(projeto_id, form, imagem_file):
         projeto = buscar_projeto(projeto_id)
         if not projeto:
-            flash('Projeto não encontrado.', 'error')
-            return redirect(url_for('projetos_auth.route_listar_projetos'))
-
-        dados = {
-            'nome_empresa': req.form.get('nome_empresa'),
-            'tecnologia': req.form.get('tecnologia'),
-            'descricao': req.form.get('descricao'),
-            'data_inicio': req.form.get('data_inicio'),
-            'data_final': req.form.get('data_final')
-        }
-
-        novo_arquivo = req.files.get('imagem')
-        if novo_arquivo and novo_arquivo.filename != '':
-            if 'imagem_id' in projeto:
-                deletar_imagem(projeto['imagem_id'])
-            imagem_id = salvar_imagem(novo_arquivo)
-            dados['imagem_id'] = imagem_id
-
+            return None
+        dados = ProjetoService.montar_dados_projeto(form, imagem_file, projeto.get('imagem_id'))
         atualizar_projeto(projeto_id, dados)
-        flash('Projeto atualizado com sucesso!', 'success')
-        return redirect(url_for('projetos_auth.route_listar_projetos'))
+        return True
 
     @staticmethod
-    def excluir_projeto(projeto_id):
+    def deletar_projeto_service(projeto_id):
         projeto = buscar_projeto(projeto_id)
         if not projeto:
-            flash('Projeto não encontrado.', 'error')
-            return redirect(url_for('projetos_auth.route_listar_projetos'))
-
+            return None
         if 'imagem_id' in projeto:
-            try:
-                deletar_imagem(projeto['imagem_id'])
-            except Exception as e:
-                flash(f'Erro ao deletar imagem: {e}', 'warning')
-
+            deletar_imagem(projeto['imagem_id'])
         remover_projeto(projeto_id)
-        flash('Projeto deletado com sucesso!', 'success')
-        return redirect(url_for('projetos_auth.route_listar_projetos'))
+        return True
+
+    @staticmethod
+    
+    def exibir_imagem_service(imagem_id):
+        try:
+            imagem = fs.get(ObjectId(imagem_id))
+            return Response(imagem.read(), mimetype=imagem.content_type)
+        except Exception as e:
+            return Response(f"Erro ao carregar imagem: {str(e)}", status=404)

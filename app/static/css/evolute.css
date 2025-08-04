@@ -89,7 +89,8 @@ header {
 
 .logo img {
     width:200px;
-    height: 50px;
+    height: 99px;
+    object-fit: cover;
     margin-right: 20px;
 }
 header .center.menu{
@@ -354,11 +355,27 @@ footer>.center{
     gap: 3.2rem;
     margin:0 auto;
 }
+.footer_col1{
+    display:flex;
+    text-align:center
+}
+
+.img_logo{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+}
+
 
 .footer_col h3{
     font-size: 1.3rem;
     margin-bottom: 1.5rem;
     color: var(--blue-light);
+}
+
+.footer_col img{
+    width:180px;
+
 }
 .footer_col p {
     margin-bottom: 1rem;
@@ -702,6 +719,7 @@ textarea{
 .center h3{
     text-align: center;
     width: 100%;
+    margin: 2rem;
     color: var(--blue-primary);
     font-size: 1.7rem;
     font-weight: bold;
@@ -741,10 +759,13 @@ textarea{
         color: var(--blue-very-dark);
         font-weight: bold;
     }
-    .det_desc span{
+.follow-up{
+    width: 100%;
+    justify-content: space-between;
 }
 
 .follow-up li{
+    justify-content: space-between;
     width:100%;
         display: flex;
     border: #0A2533 1px solid;
@@ -757,6 +778,25 @@ textarea{
     color: var(--blue-primary);
     padding: 1rem;
 }
+
+.form-controller{
+    width: 100%;
+}
+.btn-primary{
+    display: block;
+    background-color: var(--blue-primary);
+    color: var(--white);
+    border: none;
+    padding: 0.5rem 1rem;
+}
+.btn-primary:hover{
+    background-color: var(--blue-light);
+    color: var(--white);
+    border: none;
+    padding: 0.5rem 1rem;
+}
+
+
 
 @media screen and (max-width:968px) {
     header{

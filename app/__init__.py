@@ -5,7 +5,7 @@ from app.models.user_model import User
 from config import Config
 from flask_talisman import Talisman
 from flask_wtf import CSRFProtect
-csrf =CSRFProtect()
+csrf = CSRFProtect()
 from flask_login import LoginManager 
 login_manager = LoginManager()
 

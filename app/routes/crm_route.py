@@ -18,7 +18,7 @@ def route_cadastrar_oportunidade():
 @login_required
 def route_listar_oportunidades():
     oportunidades = listar_oportunidades_service()
-    return render_template("listar_oportunidades.html", oportunidades=oportunidades)
+    return render_template("painel/listar_oportunidades.html", oportunidades=oportunidades)
 
 @crm.route('/editar_oportunidades/<id>', methods=['GET', 'POST'])
 @login_required

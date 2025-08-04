@@ -6,7 +6,7 @@
      <h1>Editar Oportunidades</h1>
  
 
-    <form action="{{ url_for('crm.editar_oportunidade', id=oportunidade['_id']) }}" method="POST">
+    <form action="{{ url_for('crm.route_editar_oportunidade', id=oportunidade['_id']) }}" method="POST">
        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <label for="cliente">Cliente:</label>
         <input type="text" name="nome" id="cliente" value="{{ oportunidade['nome'] }}" required>
@@ -38,7 +38,7 @@
         <textarea name="follow_up" id="follow_up" rows="3">{{ oportunidade['follow_up'] }}</textarea>
 
         <input type="submit" value="Salvar">
-        <a href="{{ url_for('crm.listar_oportunidades') }}">Cancelar</a>
+        <a href="{{ url_for('crm.route_listar_oportunidades') }}">Cancelar</a>
     </form>
 </div>
 {% endblock %}

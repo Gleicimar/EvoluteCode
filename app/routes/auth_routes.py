@@ -191,7 +191,7 @@ def painel_view():
     
     projetos = ProjetoService.listar_todos_projetos()
     oportunidades = crm_service.listar_oportunidades() # função importada da outra rota
-    return render_template('home_painel.html', nome=nome_usuario, quantidade_usuarios=len(usuarios), projetos=projetos, oportunidades=oportunidades)
+    return render_template('painel/home_painel.html', nome=nome_usuario, quantidade_usuarios=len(usuarios), projetos=projetos, oportunidades=oportunidades)
 
 
 @auth.route('/painel/listar_usuarios')

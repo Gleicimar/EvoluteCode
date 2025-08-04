@@ -11,7 +11,7 @@
         <!-- Imagem atual -->
         <label>Imagem atual:</label>
         {% if projeto.imagem_id %}
-            <img src="{{ url_for('projetos_auth.exibir_imagem', imagem_id=projeto.imagem_id) }}"
+            <img src="{{ url_for('projetos_auth.route_exibir_imagem', imagem_id=projeto.imagem_id) }}"
                  alt="Imagem atual" style="max-width: 100%; margin-bottom: 15px; border-radius: 8px;">
         {% else %}
             <p>Nenhuma imagem disponível.</p>
@@ -38,7 +38,7 @@
 
         <input type="submit" value="Salvar Edição" style="margin-top: 15px;">
 
-        <a href="{{ url_for('projetos_auth.listar_projetos')}}" style="display: block; margin-top: 10px;">
+        <a href="{{ url_for('projetos_auth.route_listar_projetos')}}" style="display: block; margin-top: 10px;">
             Voltar
         </a>
     </form>

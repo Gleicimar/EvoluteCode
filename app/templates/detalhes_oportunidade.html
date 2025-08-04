@@ -33,19 +33,21 @@
 {% else %}
     <p>Nenhum follow-up registrado.</p>
 {% endif %}
+    <div class="form-controller">
+            <form method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        {% if followup_para_editar %}
+                <input type="hidden" name="followup_id" value="{{ followup_para_editar['_id'] }}">
+                <textarea name="followup" placeholder="Editar o follow-up..." required>{{ followup_para_editar.descricao }}</textarea>
+                <button type="submit"class="btn-primary"> Atualizar Follow-up</button>
+            {% else %}
+                <textarea name="followup" placeholder="Digite um novo follow-up..." required></textarea>
+                <button type="submit" class="btn-primary">Salvar Follow-up</button>
+            {% endif %}
+        </form>
+        
+    </div>
 
-<form method="POST">
- <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-{% if followup_para_editar %}
-        <input type="hidden" name="followup_id" value="{{ followup_para_editar['_id'] }}">
-        <textarea name="followup" placeholder="Editar o follow-up..." required>{{ followup_para_editar.descricao }}</textarea>
-        <button type="submit">Atualizar Follow-up</button>
-    {% else %}
-        <textarea name="followup" placeholder="Digite um novo follow-up..." required></textarea>
-        <button type="submit">Salvar Follow-up</button>
-    {% endif %}
-</form>
-    
 
     <a href="{{ url_for('crm.route_listar_oportunidades') }}" class="btn">Voltar</a>
 </div>
